@@ -7,6 +7,7 @@
 //=====================================================================================
 //					Stepper Basic movements
 //=====================================================================================
+#if 0
 
 #define	 ENABLE_X_MOTOR_DRIVE		digitalWrite(MOTOR_IO_X_ENABLE, LOW);
 #define	DISABLE_X_MOTOR_DRIVE		digitalWrite(MOTOR_IO_X_ENABLE, HIGH);
@@ -29,6 +30,35 @@
 
 #define	 ENABLE_ZD_MOTOR_DRIVE		digitalWrite(MOTOR_IO_ZD_ENABLE, LOW);
 #define	DISABLE_ZD_MOTOR_DRIVE		digitalWrite(MOTOR_IO_ZD_ENABLE, HIGH);
+
+#else
+
+#define	 ENABLE_X_MOTOR_DRIVE		stepperX.enableOutputs();
+#define	DISABLE_X_MOTOR_DRIVE		stepperX.disableOutputs();
+
+#define	 ENABLE_Y_MOTOR_DRIVE		stepperY.enableOutputs();
+#define	DISABLE_Y_MOTOR_DRIVE		stepperY.disableOutputs();
+
+#define	 ENABLE_R_MOTOR_DRIVE		stepperR.enableOutputs();
+#define	DISABLE_R_MOTOR_DRIVE		stepperR.disableOutputs();
+
+#define	 ENABLE_ZA_MOTOR_DRIVE		stepperZA.enableOutputs();
+#define	DISABLE_ZA_MOTOR_DRIVE		stepperZA.disableOutputs();
+
+#define	 ENABLE_ZB_MOTOR_DRIVE		stepperZB.enableOutputs();
+#define	DISABLE_ZB_MOTOR_DRIVE		stepperZB.disableOutputs();
+
+#define	 ENABLE_ZC_MOTOR_DRIVE		stepperZC.enableOutputs();
+#define	DISABLE_ZC_MOTOR_DRIVE		stepperZC.disableOutputs();
+
+#define	 ENABLE_ZD_MOTOR_DRIVE		stepperZD.enableOutputs();
+#define	DISABLE_ZD_MOTOR_DRIVE		stepperZD.disableOutputs();
+
+#endif
+
+
+
+
 
 
 extern void initialSteppers();
@@ -56,6 +86,7 @@ extern void jogXmmSpeed(float Xmm_relative, uint8_t Speed_mm_s);
 
 
 #ifdef	ADJUST_XYZ_BY_HAND
+
 extern void adjustXYZ();
 #endif
 extern void abortPrint();
