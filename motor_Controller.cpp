@@ -23,8 +23,6 @@ inline void setXYpositionZero()
 {
     stepperX.setCurrentPosition(0);
     stepperY.setCurrentPosition(0);
-    //stepperZA.setCurrentPosition(0);
-    //stepperZB.setCurrentPosition(0);
     SERIAL_CMD_ACK("X:0 Y:0 ");
 }
 
@@ -62,6 +60,25 @@ inline void disableAllOutputs()
 
 void initialSteppers()
 {
+	//set if pins inverted.
+	stepperX. setPinsInverted(false, false, false);
+	stepperY. setPinsInverted(false, false, false);
+	stepperZA.setPinsInverted(false, false, false);
+	stepperZB.setPinsInverted(false, false, false);
+	stepperZC.setPinsInverted(false, false, false);
+	stepperZD.setPinsInverted(false, false, false);
+	stepperR. setPinsInverted(false, false, false);
+
+	//set enable-pins
+	stepperX. setEnablePin(MOTOR_IO_X_ENABLE );
+	stepperY. setEnablePin(MOTOR_IO_Y_ENABLE );
+	stepperZA.setEnablePin(MOTOR_IO_ZA_ENABLE);
+	stepperZB.setEnablePin(MOTOR_IO_ZB_ENABLE);
+	stepperZC.setEnablePin(MOTOR_IO_ZC_ENABLE);
+	stepperZD.setEnablePin(MOTOR_IO_ZD_ENABLE);
+	stepperR. setEnablePin(MOTOR_IO_R_ENABLE );
+
+
     // Initialize stepper motors
     stepperX.setMaxSpeed(STEPER_X_MAXSPEED);
     stepperX.setAcceleration(STEPER_X_MAXACCEL);

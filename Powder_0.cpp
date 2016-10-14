@@ -52,8 +52,6 @@ void setup()
 void loop()
 {
 	cmd_in_loop();			//receive serial commands.process the serial commands.
-
-
 }
 
 

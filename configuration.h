@@ -93,7 +93,7 @@
 
 
 
-//													修正		细分      一圈前进长度mm
+//													修正		细分      电机转一圈前进长度mm(齿轮转换前)
 #define	X_STEP_PER_MM		(float)( (X_STEP_CORRECTION)*(200.0* 8) / (40.0) )	//20-2GT齿轮
 #define	Y_STEP_PER_MM		(float)( (Y_STEP_CORRECTION)*(200.0* 8) / (40.0) )	//20-2GT齿轮
 #define	Z_STEP_PER_MM		(float)( (Z_STEP_CORRECTION)*(200.0* 8) / (2.0)  )	//丝杆
