@@ -28,21 +28,12 @@ inline void setXYpositionZero()
 
 inline void enableXYZoutputs()
 {
-	#if 0
-		ENABLE_X_MOTOR_DRIVE;
-		ENABLE_Y_MOTOR_DRIVE;
-		ENABLE_ZA_MOTOR_DRIVE;
-		ENABLE_ZB_MOTOR_DRIVE;
-		ENABLE_ZC_MOTOR_DRIVE;
-		ENABLE_ZD_MOTOR_DRIVE;
-	#else
-		stepperX.enableOutputs();
-		stepperY.enableOutputs();
-		stepperZA.enableOutputs();
-		stepperZB.enableOutputs();
-		stepperZC.enableOutputs();
-		stepperZD.enableOutputs();
-	#endif
+	stepperX.enableOutputs();
+	stepperY.enableOutputs();
+	stepperZA.enableOutputs();
+	stepperZB.enableOutputs();
+	stepperZC.enableOutputs();
+	stepperZD.enableOutputs();
 }
 
 inline void enableAllOutputs()
@@ -53,21 +44,14 @@ inline void enableAllOutputs()
 
 inline void disableXYZoutputs()
 {
-	#if 0
-		DISABLE_X_MOTOR_DRIVE
-	    DISABLE_Y_MOTOR_DRIVE
-	    DISABLE_ZA_MOTOR_DRIVE
-	    DISABLE_ZB_MOTOR_DRIVE
-	    DISABLE_ZC_MOTOR_DRIVE
-	    DISABLE_ZD_MOTOR_DRIVE
-    #else
-	    stepperX.disableOutputs();
-		stepperY.disableOutputs();
-		stepperZA.disableOutputs();
-		stepperZB.disableOutputs();
-		stepperZC.disableOutputs();
-		stepperZD.disableOutputs();
-	#endif
+
+    stepperX.disableOutputs();
+	stepperY.disableOutputs();
+	stepperZA.disableOutputs();
+	stepperZB.disableOutputs();
+	stepperZC.disableOutputs();
+	stepperZD.disableOutputs();
+
 }
 
 inline void disableAllOutputs()
@@ -155,7 +139,7 @@ void initialSteppers()
 void homeXaxis()
 {
 	//enable X motor
-	ENABLE_X_MOTOR_DRIVE;
+	stepperX.enableOutputs();
 
 	stepperX.setCurrentPosition(0);
 	stepperX.move( - X_AXIS_LENGTH_STEP - X_AXIS_LENGTH_STEP);
@@ -182,13 +166,13 @@ void homeXaxis()
 	stepperX.setCurrentPosition(0);
 
 	//disable X motor
-	DISABLE_X_MOTOR_DRIVE;
+	stepperX.disableOutputs();
 }
 
 void homeYaxis()
 {
 	//enable Y motor
-	ENABLE_Y_MOTOR_DRIVE;
+	stepperX.enableOutputs();
 
 	stepperY.setCurrentPosition(0);
 	stepperY.setSpeed(STEPER_Y_MAXSPEED*(2/4));
@@ -215,7 +199,7 @@ void homeYaxis()
 	stepperY.setCurrentPosition(0);
 
 	//disable Y motor
-	DISABLE_Y_MOTOR_DRIVE;
+	stepperY.disableOutputs();
 }
 
 
@@ -542,10 +526,10 @@ void homeXYaxis()
 
 void ClearRod()
 {
-	ENABLE_R_MOTOR_DRIVE;
+	stepperR.enableOutputs();
 	stepperR.move(10000);
 	stepperR.runToPosition();
-	DISABLE_R_MOTOR_DRIVE;
+	stepperR.disableOutputs();
 }
 
 // Function: set a new layer 						all unit: mm
@@ -798,8 +782,8 @@ startlaying:
 //Line-printing function, with repeated times, fixed running X speed.
 void LinePrintRepeat(float ystepmm, float xspeedmm, uint16_t repeat)
 {
-	ENABLE_X_MOTOR_DRIVE;
-	ENABLE_Y_MOTOR_DRIVE;
+	stepperX.enableOutputs();
+	stepperY.enableOutputs();
 	while(repeat--)
 	{
 		jogXmmSpeed(130,xspeedmm);
@@ -808,8 +792,8 @@ void LinePrintRepeat(float ystepmm, float xspeedmm, uint16_t repeat)
 		jogYmm(ystepmm);
 		SERIAL_DEBUG_STR_INT("left:",repeat);
 	}
-	DISABLE_X_MOTOR_DRIVE
-    DISABLE_Y_MOTOR_DRIVE
+	stepperX.disableOutputs();
+	stepperY.disableOutputs();
 }
 
 //=========================================================================
