@@ -65,7 +65,7 @@ extern void SetNewLayerN(	long   		back_Y_mm_relative,
 							float     down_ZB_mm_relative,
 							float       up_ZB_mm_relative,
 							long   	  back_Y2_mm_relative,
-							unsigned int n					//laying times
+							unsigned int n						//laying times
 							);
 
 // Line print function with repeated times

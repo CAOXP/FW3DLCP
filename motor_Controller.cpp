@@ -117,7 +117,6 @@ void initialSteppers()
     //disable all motors
     disableAllOutputs();
 
-
     //for motor driver status reading pins
     pinMode(MOTOR_IO_Y_IN_PND , INPUT_PULLUP);
     pinMode(MOTOR_IO_Y_IN_ALM , INPUT_PULLUP);
@@ -129,7 +128,6 @@ void initialSteppers()
     pinMode(MOTOR_IO_ZC_IN_ALM, INPUT_PULLUP);
     pinMode(MOTOR_IO_ZD_IN_PND, INPUT_PULLUP);
     pinMode(MOTOR_IO_ZD_IN_ALM, INPUT_PULLUP);
-
 
     //
     setXYpositionZero();
@@ -143,7 +141,6 @@ void homeXaxis()
 
 	stepperX.setCurrentPosition(0);
 	stepperX.move( - X_AXIS_LENGTH_STEP - X_AXIS_LENGTH_STEP);
-
 
 	while( digitalRead(HOME_IO_X) )
 	{
@@ -177,7 +174,6 @@ void homeYaxis()
 	stepperY.setCurrentPosition(0);
 	stepperY.setSpeed(STEPER_Y_MAXSPEED*(2/4));
 	stepperY.move( - Y_AXIS_LENGTH_STEP - Y_AXIS_LENGTH_STEP);
-
 
 	while( digitalRead(MOTOR_IO_Y_ENDSTOP1) && digitalRead(MOTOR_IO_Y_ENDSTOP2) )
 	{
@@ -319,10 +315,8 @@ inline void jogYmm(float Ymm_relative)
 #ifdef	CMD_DEBUG_ECHO_Y_POS
 	float yPosmm = stepperY.currentPosition() / ((float)Y_STEP_PER_MM) ;
 	SERIAL_ECHO_STR_FLT("Y:",yPosmm,1);
-#endif
-	
+#endif	
 }
-
 
 
 inline void jogZmm(float z_mm_relative)
@@ -439,71 +433,6 @@ void jogMove_ex_mm(	float x_mm_relative, 	float y_mm_relative,
 }
 
 
-
-
-
-
-#ifdef	ADJUST_XYZ_BY_HAND
-void adjustXYZ()
-{
-	unsigned char xyz=0;
-	unsigned char bWait=true;
-	AccelStepper * pstepper=&stepperZA;
-
-	clearAllLED();
-	setSingleLED(LED_IO_ZA);
-
-
-	//enable ALL motors
-	enableAllOutputs();
-
-	while(bWait)
-	{
-		switch(keypad.scanKey())
-		{
-		case KEY_PR_DW | KEY_VL_XYZ:
-			xyz++;
-			clearAllLED();
-
-			if(xyz>3)			{xyz=0;}
-			if(xyz==0) 			{pstepper=&stepperZA;setSingleLED(LED_IO_ZA);}
-			else if (xyz==1)	{pstepper=&stepperZB;setSingleLED(LED_IO_ZB);}
-			else if (xyz==2)	{pstepper=&stepperX; setSingleLED(LED_IO_X); }
-			else if (xyz==3)    {pstepper=&stepperY; setSingleLED(LED_IO_Y); }
-			break;
-
-		case KEY_PR_DW | KEY_VL_UP:
-		case KEY_PR_HD | KEY_VL_UP:
-		case KEY_PR_BR | KEY_VL_UP:
-			pstepper->move(100);
-			pstepper->runToPosition();
-			break;
-
-		case KEY_PR_DW | KEY_VL_DW:
-		case KEY_PR_HD | KEY_VL_DW:
-		case KEY_PR_BR | KEY_VL_DW:
-			pstepper->move(-100);
-			pstepper->runToPosition();
-			break;
-
-		case KEY_PR_UP | KEY_VL_SET:
-		    bWait=false;
-			break;
-
-		default:break;
-		}//switch
-
-		delay(KEY_DETECT_TIME_INTERVAL_DEFAULT/2);
-
-	}//while()
-
-    //disable all motors
-	disableAllOutputs();
-
-	clearAllLED();
-}
-
-#endif
 
 
 //=====================================================================================

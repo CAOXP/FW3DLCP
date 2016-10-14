@@ -228,17 +228,6 @@ void commandProcess()
         switch( (int)cmd_value() )
         {
 
-#ifdef	ADJUST_XYZ_BY_HAND
-        //========================================================
-        //			MO: 	Adjust XYZ by hand   uint:step
-        //	CMD : M0: AdjustByHand
-        case 0:
-        	SERIAL_DEBUG_STR("CMD RCV: Adjust XYZ1Z2");
-        	SERIAL_DEBUG_STR("  Please take keypad.");
-        	adjustXYZ();
-        	SERIAL_DEBUG_STR("Done!");
-            break;
-#endif
 		//========================================================
 		//			M1:		JogMovements, relative value, unit:mm
         //	CMD : M1 X2 Y3 C-5 P8
