@@ -32,12 +32,6 @@
 //							Function Enables
 //===============================================================================
 
-//Enable keypad function, which controls LEDs, Buzzer, and Keys.
-//#define		KEYPAD_FUNCTION
-
-#ifdef	KEYPAD_FUNCTION
-#define		ADJUST_XYZ_BY_HAND
-#endif
 
 //Enable Circle_Print function
 //#define	CIRCLE_PRINT_FUNCTION
@@ -46,7 +40,7 @@
 #define		REPETIER_COMPATIBLE
 
 //output the errors when occuring
-#define		CMD_ERROR_OUTPUT 
+#define		CMD_ERROR_OUTPUT
 
 //enable the serial output the information when printing
 #define		CMD_DEBUG_OUTPUT
@@ -61,11 +55,8 @@
 #endif
 
 
-
-
 #define		SET_NEW_LAYER_DEFAULT_BACK		315
 #define		SET_NEW_LAYER_DEFAULT_BACK2		160
-
 
 //===============================================================================
 // 							Stepper Configurations
@@ -84,19 +75,33 @@
 #define	STEPER_R_MAXSPEED	(long)30000 	//max speed
 #define	STEPER_R_MAXACCEL	(long)50000		//max acceleration
 
-//===============================================================================
+//============================================================================================
 //
-#define	X_STEP_CORRECTION	1.000
-#define	Y_STEP_CORRECTION	1.000
-#define	Z_STEP_CORRECTION	1.000
+#define	X_STEP_CORRECTION	1.0
+#define	Y_STEP_CORRECTION	1.0
+#define	Z_STEP_CORRECTION	1.0
 
 
+// subdivison of the drivers.
+ //if none subdivision, 200 steps per round
+#define	X_DRIVER_MS_CFG		8
+#define	Y_DRIVER_MS_CFG		8
+#define	Z_DRIVER_MS_CFG		8
+
+//
+#define X_MM_PER_ROUND		40.0
+#define Y_MM_PER_ROUND		40.0
+#define Z_MM_PER_ROUND		40.0
+
+//                                               修正                 细分       电机转一圈前进长度mm(加入齿轮转换后)
+#define	X_STEP_PER_MM		(float)( (X_STEP_CORRECTION)*(200.0* (X_DRIVER_MS_CFG) ) /      (X_MM_PER_ROUND)    )
+#define	Y_STEP_PER_MM		(float)( (Y_STEP_CORRECTION)*(200.0* (Y_DRIVER_MS_CFG) ) /      (Y_MM_PER_ROUND)    )
+#define	Z_STEP_PER_MM		(float)( (Z_STEP_CORRECTION)*(200.0* (Z_DRIVER_MS_CFG) ) /      (Z_MM_PER_ROUND)    )
 
 
-//													修正		细分      电机转一圈前进长度mm(齿轮转换前)
-#define	X_STEP_PER_MM		(float)( (X_STEP_CORRECTION)*(200.0* 8) / (40.0) )	//20-2GT齿轮
-#define	Y_STEP_PER_MM		(float)( (Y_STEP_CORRECTION)*(200.0* 8) / (40.0) )	//20-2GT齿轮
-#define	Z_STEP_PER_MM		(float)( (Z_STEP_CORRECTION)*(200.0* 8) / (2.0)  )	//丝杆
+//============================================================================================
+
+
 
 //retracting after homing
 #define	X_HOME_RETRACT_MM 	1
@@ -108,7 +113,6 @@
 
 #define	X_AXIS_LENGTH_STEP			(long)((X_STEP_PER_MM) * (X_AXIS_LENGTH_MM) )	//X-AXIS length 160mm
 #define	Y_AXIS_LENGTH_STEP			(long)((Y_STEP_PER_MM) * (Y_AXIS_LENGTH_MM) )	//y-AXIS length 400mm
-
 
 
 #endif /* CONF_H_ */
