@@ -31,10 +31,8 @@ void setup()
     initialLEDbuzzerPins();
 #endif
 
-
     // Initialize stepper motors
     initialSteppers();
-
 
     //echo status
 	SERIAL_ECHO_STRln("==== Powder Printer ====");
