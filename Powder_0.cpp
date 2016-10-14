@@ -31,7 +31,12 @@ void setup()
     initialLEDbuzzerPins();
 #endif
 
-    //
+
+    // Initialize stepper motors
+    initialSteppers();
+
+
+    //echo status
 	SERIAL_ECHO_STRln("==== Powder Printer ====");
 	SERIAL_ECHO_STR  (" Author  : ");SERIAL_ECHO_STRln(STRING_AUTHOR);
 	SERIAL_ECHO_STR  (" Version : ");SERIAL_ECHO_STRln(STRING_VERSION);
@@ -39,9 +44,6 @@ void setup()
 	SERIAL_ECHO_STR  ("           ");SERIAL_ECHO_STRln(__TIME__);
 	SERIAL_ECHO_STRln("========================");
     SERIAL_ECHO_STRln("start");
-
-    // Initialize stepper motors
-    initialSteppers();
 
 }
 
