@@ -51,7 +51,7 @@
  //	1004-367 mm  for 3000 steps
  //	DIR = HIGH:  moving to the control box
  //	ENA= HIGH:  motor enable, lock
- // switch config :   5.7.8 = on,   800-division
+ // switch config :   5.7.8 = on,   800-division：4
 
 
 #define	MOTOR_IO_X_STEP		41	//x motor IO definition			Normal stepper
