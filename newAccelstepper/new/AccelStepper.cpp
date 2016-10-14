@@ -3,7 +3,7 @@
 // Copyright (C) 2009-2013 Mike McCauley
 // $Id: AccelStepper.cpp,v 1.23 2016/08/09 00:39:10 mikem Exp mikem $
 
-#include "motor_AccelStepper.h"
+#include "AccelStepper.h"
 
 #if 0
 // Some debugging assistance

@@ -11,12 +11,16 @@
 
 
  //      D ------------------------------  B
- //       |                                          |
- //       |                                          |
- //       |                                          |
- //       |                                          |
- //       |                                          |
- //       |                                          |
+ //      |                                |
+ //      |                                |
+ //      |                                |
+ //      |                                |
+ //      |                                |
+ //      |                                |
+ //      |                                |
+ //      |                                |
+ //      |                                |
+ //      |                                |
  //      C ------------------------------  A
  //                 | Contrl-Box|          
 
@@ -30,7 +34,7 @@
 #define	MOTOR_IO_Y_ENDSTOP1	A4		//confirmed on 13OCT
 #define	MOTOR_IO_Y_ENDSTOP2	A5
 
-#define	MOTOR_IO_X_ENDSTOP	A6		//not confirmed. 13oct
+#define	MOTOR_IO_X_ENDSTOP	A6		//not confirmed. 13oct, not installed
 #define	MOTOR_IO_X_STTSTOP	A7
 
  //PUL = STEP
@@ -64,8 +68,9 @@
  	//	ENA-		high means enable
 
 
+ 
  //Y config now
-//	DIR = HIGH ; moving to MOTOR A
+ //	DIR = HIGH ; moving to MOTOR A
  //          moving 2000steps for 885mm
  // switch : all on, no division
 
@@ -77,7 +82,7 @@
 
 
  //Z config now
-//	DIR = HIGH ; moving 
+ //	DIR = HIGH ; moving 
  //          moving 1000steps for  12mm
  // switch : all on, no division
 
@@ -106,8 +111,6 @@
 #define	MOTOR_IO_ZD_IN_ALM	34	
 
 
-
-
  // R axis, is normal stepper, driver: 		Micro Stepper driver, in reverse squance
  	//	ENA-		high means enable
  	//	ENA+		high		
@@ -121,24 +124,20 @@
 #define	MOTOR_IO_R_ENABLE	42	
 
 
-
 //IO configuration  ;   previous version
 #define HOME_IO_X    12	//Home of X axis
 #define HOME_IO_Y    13	//home of Y axis
 
 #define KEY_IO_UP		37	// up and down
 #define KEY_IO_DW		35
-#define KEY_IO_XYZ	39
+#define KEY_IO_XYZ		39
 #define KEY_IO_SET		41
-#define KEY_IO_STOP	43 
+#define KEY_IO_STOP		43 
 
 #define LED_IO_1	13	//LEDs for instructions
 #define LED_IO_2	12
 #define LED_IO_3	11
 #define BUZZER_IO	10	//
-
-
-
 
 
 #endif /* PINS_H_ */

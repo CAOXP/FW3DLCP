@@ -91,11 +91,7 @@
 #define	Z_STEP_CORRECTION	1.000
 
 
-//Y轴，1000steps, == 440mm  tested on 11OCT
- //en =high , enables the motor
- //low to back-0, high to move far
- 
-//X 轴
+
 
 //													修正		细分      一圈前进长度mm
 #define	X_STEP_PER_MM		(float)( (X_STEP_CORRECTION)*(200.0* 8) / (40.0) )	//20-2GT齿轮
