@@ -18,7 +18,6 @@
 #define	 ENABLE_R_MOTOR_DRIVE		digitalWrite(MOTOR_IO_R_ENABLE, LOW);
 #define	DISABLE_R_MOTOR_DRIVE		digitalWrite(MOTOR_IO_R_ENABLE, HIGH);
 
-
 #define	 ENABLE_ZA_MOTOR_DRIVE		digitalWrite(MOTOR_IO_ZA_ENABLE, LOW);
 #define	DISABLE_ZA_MOTOR_DRIVE		digitalWrite(MOTOR_IO_ZA_ENABLE, HIGH);
 

@@ -28,34 +28,52 @@ inline void setXYpositionZero()
 
 inline void enableXYZoutputs()
 {
-	ENABLE_X_MOTOR_DRIVE;
-	ENABLE_Y_MOTOR_DRIVE;
-	ENABLE_ZA_MOTOR_DRIVE;
-	ENABLE_ZB_MOTOR_DRIVE;
-	ENABLE_ZC_MOTOR_DRIVE;
-	ENABLE_ZD_MOTOR_DRIVE;
+	#if 0
+		ENABLE_X_MOTOR_DRIVE;
+		ENABLE_Y_MOTOR_DRIVE;
+		ENABLE_ZA_MOTOR_DRIVE;
+		ENABLE_ZB_MOTOR_DRIVE;
+		ENABLE_ZC_MOTOR_DRIVE;
+		ENABLE_ZD_MOTOR_DRIVE;
+	#else
+		stepperX.enableOutputs();
+		stepperY.enableOutputs();
+		stepperZA.enableOutputs();
+		stepperZB.enableOutputs();
+		stepperZC.enableOutputs();
+		stepperZD.enableOutputs();
+	#endif
 }
 
 inline void enableAllOutputs()
 {
 	enableXYZoutputs();
-	ENABLE_R_MOTOR_DRIVE;
+	stepperR.enableOutputs();
 }
 
 inline void disableXYZoutputs()
 {
-	DISABLE_X_MOTOR_DRIVE
-    DISABLE_Y_MOTOR_DRIVE
-    DISABLE_ZA_MOTOR_DRIVE
-    DISABLE_ZB_MOTOR_DRIVE
-    DISABLE_ZC_MOTOR_DRIVE
-    DISABLE_ZD_MOTOR_DRIVE
+	#if 0
+		DISABLE_X_MOTOR_DRIVE
+	    DISABLE_Y_MOTOR_DRIVE
+	    DISABLE_ZA_MOTOR_DRIVE
+	    DISABLE_ZB_MOTOR_DRIVE
+	    DISABLE_ZC_MOTOR_DRIVE
+	    DISABLE_ZD_MOTOR_DRIVE
+    #else
+	    stepperX.disableOutputs();
+		stepperY.disableOutputs();
+		stepperZA.disableOutputs();
+		stepperZB.disableOutputs();
+		stepperZC.disableOutputs();
+		stepperZD.disableOutputs();
+	#endif
 }
 
 inline void disableAllOutputs()
 {
 	disableXYZoutputs();
-    DISABLE_R_MOTOR_DRIVE
+	stepperR.disableOutputs();
 }
 
 void initialSteppers()
