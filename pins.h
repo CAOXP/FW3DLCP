@@ -72,7 +72,7 @@
  //Y config now
  //	DIR = HIGH ; moving to MOTOR A
  //          moving 2000steps for 885mm
- // switch : all on, no division
+ // switch : 4 division, switch 1 off
 
 #define	MOTOR_IO_Y_STEP		14	//Y motor IO definition				SERVO motor
 #define	MOTOR_IO_Y_DIR		15

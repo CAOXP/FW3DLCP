@@ -172,7 +172,7 @@ void homeYaxis()
 	stepperX.enableOutputs();
 
 	stepperY.setCurrentPosition(0);
-	stepperY.setSpeed(STEPER_Y_MAXSPEED*(2/4));
+	stepperY.setSpeed(STEPER_Y_MAXSPEED*(2/5));
 	stepperY.move( - Y_AXIS_LENGTH_STEP - Y_AXIS_LENGTH_STEP);
 
 	while( digitalRead(MOTOR_IO_Y_ENDSTOP1) && digitalRead(MOTOR_IO_Y_ENDSTOP2) )
