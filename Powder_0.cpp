@@ -35,13 +35,23 @@ void setup()
     initialSteppers();
 
     //echo status
-	SERIAL_ECHO_STRln("==== Powder Printer ====");
-	SERIAL_ECHO_STR  (" Author  : ");SERIAL_ECHO_STRln(STRING_AUTHOR);
-	SERIAL_ECHO_STR  (" Version : ");SERIAL_ECHO_STRln(STRING_VERSION);
-	SERIAL_ECHO_STR  (" Compiled: ");SERIAL_ECHO_STRln(__DATE__);
-	SERIAL_ECHO_STR  ("           ");SERIAL_ECHO_STRln(__TIME__);
-	SERIAL_ECHO_STRln("========================");
+    SERIAL_ECHO_STRln("==== Powder Printer ====");
+    SERIAL_ECHO_STR  (" Author  : ");SERIAL_ECHO_STRln(STRING_AUTHOR);
+    SERIAL_ECHO_STR  (" Version : ");SERIAL_ECHO_STRln(STRING_VERSION);
+    SERIAL_ECHO_STR  (" Compiled: ");SERIAL_ECHO_STRln(__DATE__);
+    SERIAL_ECHO_STR  ("           ");SERIAL_ECHO_STRln(__TIME__);
+    SERIAL_ECHO_STRln("========================");
     SERIAL_ECHO_STRln("start");
+
+
+
+    jogMove_mm(10, 0,  0, 0);
+
+    delay(1000);
+
+    //stepperY.enableOutputs();
+    //stepperY.move(-100);
+    //stepperY.runToPosition();
 
 }
 
