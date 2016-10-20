@@ -117,8 +117,10 @@ void commandProcess()
             ztemp, //
             z1temp, //
             z2temp, //
-            z3temp, //
-            z4temp, //
+            zAtemp, //
+            zBtemp, //
+            zCtemp, //
+            zDtemp, //
 			ntemp,	//nozzle
 			stemp;	//speed
 
@@ -239,30 +241,29 @@ void commandProcess()
 		//			M1:		JogMovements, relative value, unit:mm
         //	CMD : M1 X2 Y3 C-5 P8
         case 1:	//all data are  type : float
-        	xtemp=ytemp=z1temp=z2temp=0.0;
+        	xtemp=ytemp=zAtemp=zBtemp=zCtemp=zDtemp=0.0;
 
             if(cmd_seen('X')) xtemp =cmd_value();		//
             if(cmd_seen('Y')) ytemp =cmd_value();		//
             if(cmd_seen('Z')) ztemp =cmd_value();       //
-            if(cmd_seen('A')) z1temp=cmd_value();       //
-            if(cmd_seen('B')) z2temp=cmd_value();       //
-            if(cmd_seen('C')) z3temp=cmd_value();       //
-            if(cmd_seen('D')) z4temp=cmd_value();       //
+            if(cmd_seen('A')) zAtemp=cmd_value();       //
+            if(cmd_seen('B')) zBtemp=cmd_value();       //
+            if(cmd_seen('C')) zCtemp=cmd_value();       //
+            if(cmd_seen('D')) zDtemp=cmd_value();       //
 
             SERIAL_DEBUG_STR("CMD RCV: JogMove");
             SERIAL_DEBUG_STR_FLT("  X_mm :", xtemp,2);
             SERIAL_DEBUG_STR_FLT("  Y_mm :", ytemp,2);
             SERIAL_DEBUG_STR_FLT("  Z_mm :", ztemp,2);
-            SERIAL_DEBUG_STR_FLT("  ZA_mm:", z1temp,2);
-            SERIAL_DEBUG_STR_FLT("  ZB_mm:", z2temp,2);
-            SERIAL_DEBUG_STR_FLT("  ZC_mm:", z3temp,2);
-            SERIAL_DEBUG_STR_FLT("  ZD_mm:", z4temp,2);
+            SERIAL_DEBUG_STR_FLT("  ZA_mm:", zAtemp,2);
+            SERIAL_DEBUG_STR_FLT("  ZB_mm:", zBtemp,2);
+            SERIAL_DEBUG_STR_FLT("  ZC_mm:", zCtemp,2);
+            SERIAL_DEBUG_STR_FLT("  ZD_mm:", zDtemp,2);
             SERIAL_DEBUG_STR("  Moving... ");
 
-            //jogMove_mm(xtemp, ytemp, z1temp, z2temp);
-            jogMove_ex_mm(xtemp, ytemp, ztemp, z1temp, z2temp, z3temp, z4temp);
+            jogMove_ex_mm(xtemp, ytemp, ztemp, zAtemp, zBtemp, zCtemp, zDtemp);
 
-			SERIAL_DEBUG_STR("Done!");
+	SERIAL_DEBUG_STR("Done!");
 
             break;
 

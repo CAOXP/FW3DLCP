@@ -65,10 +65,12 @@ void initialSteppers()
 	//set if pins inverted.
 	stepperX. setPinsInverted(false, false, false);
 	stepperY. setPinsInverted(false, false, false);
-	stepperZA.setPinsInverted(false, false, false);
-	stepperZB.setPinsInverted(false, false, false);
-	stepperZC.setPinsInverted(false, false, false);
-	stepperZD.setPinsInverted(false, false, false);
+
+	stepperZA.setPinsInverted(true, false, false);
+	stepperZB.setPinsInverted(true, false, false);
+	stepperZC.setPinsInverted(true, false, false);
+	stepperZD.setPinsInverted(true, false, false);
+
 	stepperR. setPinsInverted(false, false, false);
 
 	//set enable-pins
@@ -260,6 +262,7 @@ void jogXmmSpeed(float Xmm_relative, uint8_t Speed_mm_s)
 //speed will be changed during stepping
 inline void jogXmm(float Xmm_relative)
 {
+
 	long jogXsteps   = Xmm_relative * X_STEP_PER_MM;
 
 	long destPosStep = stepperX.currentPosition() + jogXsteps;
@@ -326,22 +329,35 @@ inline void jogYmm(float Ymm_relative)
 inline void jogZmm(float z_mm_relative)
 {
 	long tmp = Z_STEP_PER_MM * z_mm_relative;
+	bool runFlag = true;
+	bool runFlagA=false;
+	bool runFlagB=false;
+	bool runFlagC=false;
+	bool runFlagD=false;
 	stepperZA.move(tmp);
 	stepperZB.move(tmp);
 	stepperZC.move(tmp);
 	stepperZD.move(tmp);
 
-	while(1)
+	while(runFlag)
 	{
-		stepperZA.run();
-		stepperZB.run();
-		stepperZC.run();
-		stepperZD.run();
+		runFlagA=stepperZA.run();
+		runFlagB=stepperZB.run();
+		runFlagC=stepperZC.run();
+		runFlagD=stepperZD.run();
+
+		runFlag = runFlagA && runFlagB && runFlagC && runFlagD;
 
 		//check the position of each sensor.
 		if(1)
 		{}
 	}
+}
+#define   FLOAT_ZERO_GAP	0.0001
+
+inline bool isFloatZero(float dat)
+{
+	return abs(dat) < FLOAT_ZERO_GAP ;
 }
 
 inline void jogZAmm(float ZA_mm_relative)
@@ -369,39 +385,6 @@ inline void jogZDmm(float ZD_mm_relative)
 }
 
 
-//relative movements control
-// unit:mm
-void jogMove_mm(float x_mm_relative, 	float y_mm_relative,
-				float ZA_mm_relative, 	float ZB_mm_relative)
-{
-	//enable XYZ motors
-	enableXYZoutputs();
-
-	if(x_mm_relative)
-	{
-		jogXmm(x_mm_relative);
-	}
-
-	if(y_mm_relative)
-	{
-		jogYmm(y_mm_relative);
-	}
-
-	if(ZA_mm_relative)
-	{
-		jogZAmm(ZA_mm_relative);
-	}
-
-	if(ZB_mm_relative)
-	{
-		jogZBmm(ZB_mm_relative);
-	}
-
-    //disable all motors
-	disableXYZoutputs();
-}
-
-
 void jogMove_ex_mm(	float x_mm_relative, 	float y_mm_relative,
 					float z_mm_relative,
 					float ZA_mm_relative, 	float ZB_mm_relative,
@@ -410,30 +393,53 @@ void jogMove_ex_mm(	float x_mm_relative, 	float y_mm_relative,
 	//enable XYZ motors
 	enableXYZoutputs();
 
-	if(x_mm_relative)
+            SERIAL_DEBUG_STR_FLT("  ZA_mm_relative:", ZA_mm_relative,2);
+            SERIAL_DEBUG_STR_FLT("  ZB_mm_relative:", ZB_mm_relative,2);
+            SERIAL_DEBUG_STR_FLT("  ZC_mm_relative:", ZC_mm_relative,2);
+            SERIAL_DEBUG_STR_FLT("  ZD_mm_relative:", ZD_mm_relative,2);
+
+
+	if( abs(x_mm_relative)  >    FLOAT_ZERO_GAP)
 	{
 		jogXmm(x_mm_relative);
 	}
 
-	if(y_mm_relative)
+	if( abs(y_mm_relative)  >  FLOAT_ZERO_GAP  )
 	{
 		jogYmm(y_mm_relative);
 	}
 
-	if(z_mm_relative)
+	if(  abs(z_mm_relative) >  FLOAT_ZERO_GAP )
 	{
-		
+		jogZmm(z_mm_relative);
 	}
 	else
 	{
-		if(ZA_mm_relative) jogZAmm(ZA_mm_relative);
-		if(ZB_mm_relative) jogZBmm(ZB_mm_relative);
-		if(ZC_mm_relative) jogZCmm(ZC_mm_relative);
-		if(ZD_mm_relative) jogZDmm(ZD_mm_relative);
+            		SERIAL_DEBUG_STR(" sdfelativ");
+
+		if(  abs(ZA_mm_relative) > FLOAT_ZERO_GAP )
+		{
+			jogZAmm(ZA_mm_relative);
+		}
+
+		if(  abs(ZB_mm_relative) > FLOAT_ZERO_GAP )
+		{
+			jogZBmm(ZB_mm_relative);
+		}
+
+		if(  abs(ZC_mm_relative) > FLOAT_ZERO_GAP )
+		{
+			jogZCmm(ZC_mm_relative);
+		}
+
+		if(  abs(ZD_mm_relative) > FLOAT_ZERO_GAP )
+		{
+			jogZDmm(ZD_mm_relative);
+		}
 	}
 
     //disable all motors
-	disableXYZoutputs();
+	//disableXYZoutputs();
 }
 
 

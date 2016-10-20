@@ -39,9 +39,6 @@ extern void adjustXYZ();
 #endif
 extern void abortPrint();
 
-extern void jogMove_mm(	float x_mm_relative, float y_mm_relative,
-						float ZA_mm_relative, float ZB_mm_relative);
-
 extern void jogMove_ex_mm(	float x_mm_relative, 	float y_mm_relative,
 							float z_mm_relative,
 							float ZA_mm_relative, 	float ZB_mm_relative,

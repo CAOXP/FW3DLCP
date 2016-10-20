@@ -86,12 +86,12 @@
  //if none subdivision, 200 steps per round
 #define	X_DRIVER_MS_CFG		16
 #define	Y_DRIVER_MS_CFG		4
-#define	Z_DRIVER_MS_CFG		1
+#define	Z_DRIVER_MS_CFG		4
 
 //
 #define X_MM_PER_ROUND		(57.2*3.14)
 #define Y_MM_PER_ROUND		(62.8*3.14)		//齿轮直径后的周长？？？？这个要重新再量,  (测量得直径62.8  @20161020)
-#define Z_MM_PER_ROUND		2.5 		//螺杆是 5005的尺寸，齿轮是1:1
+#define Z_MM_PER_ROUND		(5.0) 			//螺杆是 5005的尺寸，齿轮是1:1
 
 //                                               修正                 细分       电机转一圈前进长度mm(加入齿轮转换后)
 #define	X_STEP_PER_MM		(float)( (X_STEP_CORRECTION)*(200.0* (X_DRIVER_MS_CFG) ) /      (X_MM_PER_ROUND)    )
