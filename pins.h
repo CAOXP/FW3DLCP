@@ -86,30 +86,29 @@
  //          moving 1000steps for  12mm
  // switch : all on, no division
 
-#define	MOTOR_IO_ZA_STEP	19	//ZA motor IO definition			SERVO motor
-#define	MOTOR_IO_ZA_DIR		20
-#define	MOTOR_IO_ZA_ENABLE	21	
-#define	MOTOR_IO_ZA_IN_PND	22
-#define	MOTOR_IO_ZA_IN_ALM	23	
+#define	MOTOR_IO_ZA_STEP	38	//ZA motor IO definition			SERVO motor
+#define	MOTOR_IO_ZA_DIR		37
+#define	MOTOR_IO_ZA_ENABLE	36	
+#define	MOTOR_IO_ZA_IN_PND	35
+#define	MOTOR_IO_ZA_IN_ALM	34	
 
-#define	MOTOR_IO_ZB_STEP	24	//ZB motor IO definition			SERVO motor
-#define	MOTOR_IO_ZB_DIR		25
-#define	MOTOR_IO_ZB_ENABLE	26	
-#define	MOTOR_IO_ZB_IN_PND	27
-#define	MOTOR_IO_ZB_IN_ALM	28	
+#define	MOTOR_IO_ZB_STEP	33	//ZB motor IO definition			SERVO motor
+#define	MOTOR_IO_ZB_DIR		32
+#define	MOTOR_IO_ZB_ENABLE	31	
+#define	MOTOR_IO_ZB_IN_PND	30
+#define	MOTOR_IO_ZB_IN_ALM	29	
 
-#define	MOTOR_IO_ZC_STEP	33	//ZC motor IO definition			SERVO motor
-#define	MOTOR_IO_ZC_DIR		32
-#define	MOTOR_IO_ZC_ENABLE	31	
-#define	MOTOR_IO_ZC_IN_PND	30
-#define	MOTOR_IO_ZC_IN_ALM	29	
+#define	MOTOR_IO_ZC_STEP	24	//ZC motor IO definition			SERVO motor
+#define	MOTOR_IO_ZC_DIR		25
+#define	MOTOR_IO_ZC_ENABLE	26	
+#define	MOTOR_IO_ZC_IN_PND	27
+#define	MOTOR_IO_ZC_IN_ALM	28	
 
-#define	MOTOR_IO_ZD_STEP	38	//ZD motor IO definition			SERVO motor
-#define	MOTOR_IO_ZD_DIR		37
-#define	MOTOR_IO_ZD_ENABLE	36	
-#define	MOTOR_IO_ZD_IN_PND	35
-#define	MOTOR_IO_ZD_IN_ALM	34	
-
+#define	MOTOR_IO_ZD_STEP	19	//ZD motor IO definition			SERVO motor
+#define	MOTOR_IO_ZD_DIR		20
+#define	MOTOR_IO_ZD_ENABLE	21	
+#define	MOTOR_IO_ZD_IN_PND	22
+#define	MOTOR_IO_ZD_IN_ALM	23	
 
  // R axis, is normal stepper, driver: 		Micro Stepper driver, in reverse squance
  	//	ENA-		high means enable
