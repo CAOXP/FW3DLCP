@@ -44,9 +44,6 @@ void setup()
     SERIAL_ECHO_STRln("start");
 
 
-
-    jogMove_mm(10, 0,  0, 0);
-
     delay(1000);
 
     //stepperY.enableOutputs();
@@ -262,7 +259,7 @@ void commandProcess()
             SERIAL_DEBUG_STR_FLT("  ZD_mm:", z4temp,2);
 			SERIAL_DEBUG_STR("  Moving... ");
 
-            jogMove_mm(xtemp, ytemp, z1temp, z2temp);
+            //jogMove_mm(xtemp, ytemp, z1temp, z2temp);
             jogMove_ex_mm(xtemp, ytemp, ztemp, z1temp, z2temp, z3temp, z4temp);
 
 			SERIAL_DEBUG_STR("Done!");

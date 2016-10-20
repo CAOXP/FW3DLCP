@@ -66,8 +66,8 @@
 #define	STEPER_X_MAXSPEED	(long)20000		//max speed
 #define	STEPER_X_MAXACCEL	(long)10000		//max acceleration
 
-#define	STEPER_Y_MAXSPEED	(long)4000 		//max speed
-#define	STEPER_Y_MAXACCEL	(long)5000		//max acceleration
+#define	STEPER_Y_MAXSPEED	(long)2000 		//max speed
+#define	STEPER_Y_MAXACCEL	(long)3000		//max acceleration
 
 #define	STEPER_Z_MAXSPEED	(long)30000		//max speed
 #define	STEPER_Z_MAXACCEL	(long)20000		//max acceleration
