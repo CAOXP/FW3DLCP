@@ -148,7 +148,7 @@ void homeXaxis()
 		if(stepperX.currentPosition()==stepperX.targetPosition())
 		{
 			SERIAL_ERROR_STR("Err: homing X unreachable. ");
-
+			SERIAL_ERROR_STR("Err: Reconnect the printer.");
 			while(1){}
 		}
 	}
@@ -181,6 +181,7 @@ void homeYaxis()
 		if(stepperY.currentPosition()==stepperY.targetPosition())
 		{
 			SERIAL_ERROR_STR("Err: homing Y unreachable.");
+			SERIAL_ERROR_STR("Err: Reconnect the printer.");
 			while(1){}
 		}
 	}
@@ -196,6 +197,9 @@ void homeYaxis()
 
 	//disable Y motor
 	stepperY.disableOutputs();
+
+
+	stepperY.setSpeed(STEPER_Y_MAXSPEED);
 }
 
 

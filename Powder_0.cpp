@@ -249,15 +249,15 @@ void commandProcess()
             if(cmd_seen('C')) z3temp=cmd_value();       //
             if(cmd_seen('D')) z4temp=cmd_value();       //
 
-        	SERIAL_DEBUG_STR("CMD RCV: JogMove");
-        	SERIAL_DEBUG_STR_FLT("  X_mm :", xtemp,2);
+            SERIAL_DEBUG_STR("CMD RCV: JogMove");
+            SERIAL_DEBUG_STR_FLT("  X_mm :", xtemp,2);
             SERIAL_DEBUG_STR_FLT("  Y_mm :", ytemp,2);
             SERIAL_DEBUG_STR_FLT("  Z_mm :", ztemp,2);
             SERIAL_DEBUG_STR_FLT("  ZA_mm:", z1temp,2);
             SERIAL_DEBUG_STR_FLT("  ZB_mm:", z2temp,2);
             SERIAL_DEBUG_STR_FLT("  ZC_mm:", z3temp,2);
             SERIAL_DEBUG_STR_FLT("  ZD_mm:", z4temp,2);
-			SERIAL_DEBUG_STR("  Moving... ");
+            SERIAL_DEBUG_STR("  Moving... ");
 
             //jogMove_mm(xtemp, ytemp, z1temp, z2temp);
             jogMove_ex_mm(xtemp, ytemp, ztemp, z1temp, z2temp, z3temp, z4temp);
