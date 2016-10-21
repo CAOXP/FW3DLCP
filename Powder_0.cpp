@@ -241,7 +241,7 @@ void commandProcess()
 		//			M1:		JogMovements, relative value, unit:mm
         //	CMD : M1 X2 Y3 C-5 P8
         case 1:	//all data are  type : float
-        	xtemp=ytemp=zAtemp=zBtemp=zCtemp=zDtemp=0.0;
+            xtemp=ytemp=zAtemp=zBtemp=zCtemp=zDtemp=0.0;
 
             if(cmd_seen('X')) xtemp =cmd_value();		//
             if(cmd_seen('Y')) ytemp =cmd_value();		//
@@ -263,7 +263,7 @@ void commandProcess()
 
             jogMove_ex_mm(xtemp, ytemp, ztemp, zAtemp, zBtemp, zCtemp, zDtemp);
 
-	SERIAL_DEBUG_STR("Done!");
+            SERIAL_DEBUG_STR("Done!");
 
             break;
 
