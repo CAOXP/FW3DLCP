@@ -11,9 +11,9 @@
 
 extern void initialSteppers();
 
-	// Reset the positions of the steppers. This acts as a margin
-	// for the printer, making it possible to fill the pistons with
-	// powder and stopping the
+// Reset the positions of the steppers. This acts as a margin
+// for the printer, making it possible to fill the pistons with
+// powder and stopping the
 extern void setXYpositionZero();
 
 //=====================================================================================
@@ -40,9 +40,9 @@ extern void adjustXYZ();
 extern void abortPrint();
 
 extern void jogMove_ex_mm(	float x_mm_relative, 	float y_mm_relative,
-							float z_mm_relative,
-							float ZA_mm_relative, 	float ZB_mm_relative,
-							float ZC_mm_relative, 	float ZD_mm_relative);
+                            float z_mm_relative,
+                            float ZA_mm_relative, 	float ZB_mm_relative,
+                            float ZC_mm_relative, 	float ZD_mm_relative);
 
 //=====================================================================================
 //					Printing movements
@@ -52,18 +52,18 @@ extern void ClearRod();
 
 //set up a new layer
 extern void SetNewLayer(	long       back_Y_mm_relative,
-							float       up_ZA_mm_relative,
-							float     down_ZB_mm_relative,
-							float       up_ZB_mm_relative,		//up for pressure
-							long      back_Y2_mm_relative		//back for pressure
-						);
+                            float       up_ZA_mm_relative,
+                            float     down_ZB_mm_relative,
+                            float       up_ZB_mm_relative,		//up for pressure
+                            long      back_Y2_mm_relative		//back for pressure
+                       );
 extern void SetNewLayerN(	long   		back_Y_mm_relative,
-							float       up_ZA_mm_relative,
-							float     down_ZB_mm_relative,
-							float       up_ZB_mm_relative,
-							long   	  back_Y2_mm_relative,
-							unsigned int n						//laying times
-							);
+                            float       up_ZA_mm_relative,
+                            float     down_ZB_mm_relative,
+                            float       up_ZB_mm_relative,
+                            long   	  back_Y2_mm_relative,
+                            unsigned int n						//laying times
+                        );
 
 // Line print function with repeated times
 extern void LinePrintRepeat(float ystepmm, float xspeedmm, uint16_t repeat);

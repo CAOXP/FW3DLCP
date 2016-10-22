@@ -13,7 +13,7 @@
 //						Keypad Setting
 //==================================================================================
 #ifdef	KEYPAD_FUNCTION
-paraKeypad keypad(keyPins,KEYNUMBERS,keyCodes);
+paraKeypad keypad(keyPins, KEYNUMBERS, keyCodes);
 #endif
 
 //==================================================================================

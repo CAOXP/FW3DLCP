@@ -19,9 +19,9 @@ void initialLEDbuzzerPins()
 
 void clearAllLED(void)
 {
-	digitalWrite(LED_IO_1, HIGH);
-	digitalWrite(LED_IO_2, HIGH);
-	digitalWrite(LED_IO_3, HIGH);
+    digitalWrite(LED_IO_1, HIGH);
+    digitalWrite(LED_IO_2, HIGH);
+    digitalWrite(LED_IO_3, HIGH);
 }
 
 void beep()

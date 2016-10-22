@@ -19,14 +19,14 @@
 //							Printing Parameters
 //===============================================================================
 
-	// LOW the Z1,Z2 to prevent being swept by the scroller during printing.
-	// LIFT back before setNewLayer()
+// LOW the Z1,Z2 to prevent being swept by the scroller during printing.
+// LIFT back before setNewLayer()
 #define		PRINT_PREVENT_SWEPT_MM		1.0
 
 //==================================================================================
 //						Temperature Monitor
 //==================================================================================
-#define	TEMPERATURE_MONITOR_Y_MOTOR
+#define		TEMPERATURE_MONITOR_Y_MOTOR
 
 //===============================================================================
 //							Function Enables
@@ -46,11 +46,11 @@
 #define		CMD_DEBUG_OUTPUT
 #ifdef		CMD_DEBUG_OUTPUT
 
-	#define		CMD_DEBUG_ECHO_X_POS
-	#define		CMD_DEBUG_ECHO_Y_POS
+    #define		CMD_DEBUG_ECHO_X_POS
+    #define		CMD_DEBUG_ECHO_Y_POS
 
 	//send back the command information
-	#define		CMD_DEBUG_ECHO_CMDINFO
+    #define		CMD_DEBUG_ECHO_CMDINFO
 
 #endif
 
@@ -83,7 +83,7 @@
 
 
 // subdivison of the drivers.
- //if none subdivision, 200 steps per round
+//if none subdivision, 200 steps per round
 #define	X_DRIVER_MS_CFG		16
 #define	Y_DRIVER_MS_CFG		4
 #define	Z_DRIVER_MS_CFG		4
