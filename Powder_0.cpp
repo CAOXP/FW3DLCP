@@ -170,10 +170,11 @@ void commandProcess()
 
             	SetNewLayerN(btemp, z1temp, z2temp,utemp,b2temp,rtemp);
 
-//report Y-Motor temperature
-#ifdef	TEMPERATURE_MONITOR_Y_MOTOR
-	SERIAL_ECHO_STR_FLT("YmtrTmp:", yMotorTempDS.getTemp(), 2);
-#endif
+                //report Y-Motor temperature
+                #ifdef	TEMPERATURE_MONITOR_Y_MOTOR
+                SERIAL_ECHO_STR_FLT("YmtrTmp:", yMotorTempDS.getTemp(), 2);
+                #endif
+
                 SERIAL_DEBUG_STR("Done!");
         	}
         	break;
