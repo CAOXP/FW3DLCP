@@ -44,6 +44,7 @@
 
 //enable the serial output the information when printing
 #define		CMD_DEBUG_OUTPUT
+
 #ifdef		CMD_DEBUG_OUTPUT
 
     #define		CMD_DEBUG_ECHO_X_POS
@@ -105,7 +106,7 @@
 
 //retracting after homing
 #define	X_HOME_RETRACT_MM 	10
-#define	Y_HOME_RETRACT_MM 	20
+#define	Y_HOME_RETRACT_MM 	50
 //===============================================================================
 
 #define	X_AXIS_LENGTH_MM	130	//mm

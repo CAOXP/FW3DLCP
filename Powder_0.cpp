@@ -227,9 +227,9 @@ void commandProcess()
         	//call line print
         	LinePrintRepeat(ytemp,stemp,rtemp);
 
-			SERIAL_DEBUG_STR("Done!");
+	SERIAL_DEBUG_STR("Done!");
 
-			break;
+	break;
         }
     }
     //System setting

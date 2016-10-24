@@ -187,8 +187,12 @@ void homeYaxis()
             while(1) {}
         }
     }
-    stepperY.stop();
-    stepperY.setCurrentPosition(0);		//Clear the last steps
+
+    stepperY.stop();        //without loop
+  //  stepperY.runToPosition();
+
+    stepperY.setCurrentPosition(0);     //Clear the last steps
+
 
 #if Y_HOME_RETRACT_MM >0
     stepperY.move(Y_STEP_PER_MM * Y_HOME_RETRACT_MM);
