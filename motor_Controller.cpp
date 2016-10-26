@@ -173,6 +173,14 @@ void homeYaxis()
     //enable Y motor
     stepperX.enableOutputs();
 
+    // if near  ZERO, move + , then back to zero
+    if(   (  digitalRead(MOTOR_IO_Y_ENDSTOP1) && digitalRead(MOTOR_IO_Y_ENDSTOP2)     )  == false )
+    {
+        stepperY.setCurrentPosition(0);
+        stepperY.move(  400  *  Y_STEP_PER_MM);        //without loop
+        stepperY.runToPosition();
+    }
+
     stepperY.setCurrentPosition(0);
     stepperY.setSpeed(STEPER_Y_MAXSPEED / 5);
     stepperY.move( - Y_AXIS_LENGTH_STEP - Y_AXIS_LENGTH_STEP);
