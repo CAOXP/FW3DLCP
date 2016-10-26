@@ -177,7 +177,7 @@ void homeYaxis()
     if(   (  digitalRead(MOTOR_IO_Y_ENDSTOP1) && digitalRead(MOTOR_IO_Y_ENDSTOP2)     )  == false )
     {
         stepperY.setCurrentPosition(0);
-        stepperY.move(  400  *  Y_STEP_PER_MM);        //without loop
+        stepperY.move(  500  *  Y_STEP_PER_MM);        //without loop
         stepperY.runToPosition();
     }
 
