@@ -106,7 +106,7 @@
 
 //retracting after homing
 #define	X_HOME_RETRACT_MM 	10
-#define	Y_HOME_RETRACT_MM 	50
+#define	Y_HOME_RETRACT_MM 	30
 //===============================================================================
 
 #define	X_AXIS_LENGTH_MM	130	//mm
