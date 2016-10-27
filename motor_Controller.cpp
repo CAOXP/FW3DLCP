@@ -197,7 +197,7 @@ void homeYaxis()
     }
 
 
-    stepperY.move(  0 -320  *  Y_STEP_PER_MM);        //without loop
+    stepperY.move(  0 -200  *  Y_STEP_PER_MM);        //without loop
     stepperY.runToPosition();
 
     stepperY.setCurrentPosition(0);     //Clear the last steps
