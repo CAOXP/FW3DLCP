@@ -85,6 +85,8 @@
 
 // subdivison of the drivers.
 //if none subdivision, 200 steps per round
+
+#define	R_DRIVER_MS_CFG		8
 #define	X_DRIVER_MS_CFG		8
 #define	Y_DRIVER_MS_CFG		4
 #define	Z_DRIVER_MS_CFG		4
