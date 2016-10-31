@@ -141,10 +141,18 @@ void homeXaxis()
     //enable X motor
     stepperX.enableOutputs();
 
-    stepperX.setCurrentPosition(0);
-    stepperX.move( - X_AXIS_LENGTH_STEP - X_AXIS_LENGTH_STEP);
+    // if near  ZERO, move + , then back to zero
+    if(    digitalRead(MOTOR_IO_X_ESTP_MIN)  == LOW )
+    {
+        stepperX.setCurrentPosition(0);
+        stepperX.move(  200  *  X_STEP_PER_MM);        //without loop
+        stepperX.runToPosition();
+    }
 
-    while( digitalRead(HOME_IO_X) )
+    //moving to X-MIN
+    stepperX.setCurrentPosition(0);
+    stepperX.move( 0 -  X_AXIS_LENGTH_STEP - X_AXIS_LENGTH_STEP);
+    while( digitalRead(MOTOR_IO_X_ESTP_MIN) )
     {
         stepperX.run();
         if(stepperX.currentPosition() == stepperX.targetPosition())
@@ -154,11 +162,13 @@ void homeXaxis()
             while(1) {}
         }
     }
-    stepperX.stop();
-    stepperX.setCurrentPosition(0);		//Clear the last steps
+    stepperX.move( 0- 50  *  X_STEP_PER_MM   );  
+    stepperX.runToPosition();
+    
+    stepperX.setCurrentPosition(0);
 
 #if X_HOME_RETRACT_MM >0
-    stepperX.move(X_STEP_PER_MM * X_HOME_RETRACT_MM);
+    stepperX.move(   X_STEP_PER_MM * X_HOME_RETRACT_MM   );
     stepperX.runToPosition();
 #endif
 
@@ -171,7 +181,7 @@ void homeXaxis()
 void homeYaxis()
 {
     //enable Y motor
-    stepperX.enableOutputs();
+    stepperY.enableOutputs();
 
     // if near  ZERO, move + , then back to zero
     if(   (  digitalRead(MOTOR_IO_Y_ENDSTOP1) && digitalRead(MOTOR_IO_Y_ENDSTOP2)     )  == false )
@@ -195,7 +205,6 @@ void homeYaxis()
             while(1) {}
         }
     }
-
 
     stepperY.move(  0 -200  *  Y_STEP_PER_MM);        //without loop
     stepperY.runToPosition();

@@ -17,8 +17,8 @@ void setup()
     }
 
     //for X Y Z end stops
-    pinMode(MOTOR_IO_X_ENDSTOP , INPUT_PULLUP);
-    pinMode(MOTOR_IO_X_STTSTOP , INPUT_PULLUP);
+    pinMode(MOTOR_IO_X_ESTP_MIN , INPUT_PULLUP);
+    pinMode(MOTOR_IO_X_ESTP_MAX , INPUT_PULLUP);
     pinMode(MOTOR_IO_Y_ENDSTOP1, INPUT_PULLUP);
     pinMode(MOTOR_IO_Y_ENDSTOP2, INPUT_PULLUP);
     pinMode(MOTOR_IO_ZA_ENDSTOP, INPUT_PULLUP);

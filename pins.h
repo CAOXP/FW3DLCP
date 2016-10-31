@@ -34,8 +34,8 @@
 #define	MOTOR_IO_Y_ENDSTOP1	A4		//confirmed on 13OCT
 #define	MOTOR_IO_Y_ENDSTOP2	A5
 
-#define	MOTOR_IO_X_ENDSTOP	A6		//not confirmed. 13oct, not installed
-#define	MOTOR_IO_X_STTSTOP	A7
+#define	MOTOR_IO_X_ESTP_MAX	A6		//confirmed on 31OCT
+#define	MOTOR_IO_X_ESTP_MIN	A7
 
 //PUL = STEP
 
