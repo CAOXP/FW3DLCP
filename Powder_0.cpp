@@ -27,9 +27,7 @@ void setup()
     pinMode(MOTOR_IO_ZD_ENDSTOP, INPUT_PULLUP);
 
 
-#ifdef  KEYPAD_FUNCTION
     initialLEDbuzzerPins();
-#endif
 
     // Initialize stepper motors
     initialSteppers();
@@ -58,7 +56,8 @@ void setup()
 
 void loop()
 {
-	cmd_in_loop();			//receive serial commands.process the serial commands.
+        cmd_in_loop();			//receive serial commands.process the serial commands.
+        ledBuz_in_loop();
 }
 
 
@@ -110,19 +109,19 @@ void commandProcess()
     //
     //		M11 : JogXspeedMovement			M1 X2 S23				(unit:mm,mm/s)
     //
-
-	float 	utemp,	//printing piston for pressing
-			xtemp,	//
-			ytemp,	//
-            ztemp, //
-            z1temp, //
-            z2temp, //
-            zAtemp, //
-            zBtemp, //
-            zCtemp, //
-            zDtemp, //
-			ntemp,	//nozzle
-			stemp;	//speed
+            float       
+                        utemp,	//printing piston for pressing
+                        xtemp,	//
+                        ytemp,	//
+                        ztemp, //
+                        z1temp, //
+                        z2temp, //
+                        zAtemp, //
+                        zBtemp, //
+                        zCtemp, //
+                        zDtemp, //
+                        ntemp,	//nozzle
+                        stemp;	//speed
 
 	long 	rtemp,	//repeat times
 			btemp,	//back for new layer

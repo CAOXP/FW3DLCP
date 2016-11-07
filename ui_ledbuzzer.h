@@ -7,12 +7,7 @@
  */
 
 
-#ifdef	KEYPAD_FUNCTION
-
 extern void initialLEDbuzzerPins();
 extern void clearAllLED(void);
 extern void beep();
-
-#define		setSingleLED(led_no)	digitalWrite((led_no), HIGH)
-
-#endif /* LEDBUZZER_H_ */
+extern void ledBuz_in_loop();

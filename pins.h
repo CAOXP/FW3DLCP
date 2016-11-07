@@ -124,19 +124,19 @@
 
 
 //IO configuration  ;   previous version
-#define HOME_IO_X    12	//Home of X axis
-#define HOME_IO_Y    13	//home of Y axis
+#define HOME_IO_X    MOTOR_IO_X_ESTP_MIN
+#define HOME_IO_Y    MOTOR_IO_Y_ENDSTOP1
 
-#define KEY_IO_UP		37	// up and down
-#define KEY_IO_DW		35
+#define KEY_IO_UP			37	// up and down
+#define KEY_IO_DW			35
 #define KEY_IO_XYZ		39
-#define KEY_IO_SET		41
+#define KEY_IO_SET			41
 #define KEY_IO_STOP		43
 
 #define LED_IO_1	13	//LEDs for instructions
 #define LED_IO_2	12
 #define LED_IO_3	11
-#define BUZZER_IO	10	//
 
 
 #endif /* PINS_H_ */
+

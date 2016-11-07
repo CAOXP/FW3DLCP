@@ -9,6 +9,8 @@
 
 #include "Powder_0.h"
 
+#include "WaitTimeMSec.h"
+
 
 void initialLEDbuzzerPins()
 {
@@ -26,4 +28,28 @@ void clearAllLED(void)
 
 void beep()
 {
+}
+
+
+WaitTimeMSec wait100mSec(100);
+
+unsigned int flashcnt=0;
+unsigned int timecnt=0;
+
+void ledBuz_in_loop()
+{
+	if( wait100mSec.bCheckTimeUp() ) 
+	{
+		timecnt ++;
+		if(timecnt > 19) 
+		{
+			digitalWrite(LED_IO_2, LOW);
+		}
+
+		if(timecnt > 20)
+		{
+			digitalWrite(LED_IO_2, HIGH);
+			timecnt = 0;
+		}
+	}
 }

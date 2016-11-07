@@ -145,13 +145,15 @@ void homeXaxis()
     if(    digitalRead(MOTOR_IO_X_ESTP_MIN)  == LOW )
     {
         stepperX.setCurrentPosition(0);
-        stepperX.move(  200  *  X_STEP_PER_MM);        //without loop
+        stepperX.move(  250  *  X_STEP_PER_MM);        //without loop
         stepperX.runToPosition();
     }
 
     //moving to X-MIN
     stepperX.setCurrentPosition(0);
     stepperX.move( 0 -  X_AXIS_LENGTH_STEP - X_AXIS_LENGTH_STEP);
+
+
     while( digitalRead(MOTOR_IO_X_ESTP_MIN) )
     {
         stepperX.run();
@@ -162,10 +164,15 @@ void homeXaxis()
             while(1) {}
         }
     }
-    stepperX.move( 0- 50  *  X_STEP_PER_MM   );  
+
+    stepperX.setCurrentPosition(0);
+
+    stepperX.move( 0- 10  *  X_STEP_PER_MM   );  
     stepperX.runToPosition();
     
     stepperX.setCurrentPosition(0);
+
+    delay(1000);
 
 #if X_HOME_RETRACT_MM >0
     stepperX.move(   X_STEP_PER_MM * X_HOME_RETRACT_MM   );
@@ -211,6 +218,8 @@ void homeYaxis()
 
     stepperY.setCurrentPosition(0);     //Clear the last steps
 
+
+    delay(100);
 
 #if Y_HOME_RETRACT_MM >0
     stepperY.move(Y_STEP_PER_MM * Y_HOME_RETRACT_MM);
