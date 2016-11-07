@@ -194,7 +194,7 @@ void homeYaxis()
     if(   (  digitalRead(MOTOR_IO_Y_ENDSTOP1) && digitalRead(MOTOR_IO_Y_ENDSTOP2)     )  == false )
     {
         stepperY.setCurrentPosition(0);
-        stepperY.move(  500  *  Y_STEP_PER_MM);        //without loop
+        stepperY.move(  800  *  Y_STEP_PER_MM);        //without loop
         stepperY.runToPosition();
     }
 
@@ -383,6 +383,7 @@ inline void jogZmm(float z_mm_relative)
         {}
     }
 }
+
 #define   FLOAT_ZERO_GAP	0.0001
 
 inline bool isFloatZero(float dat)
@@ -445,7 +446,7 @@ void jogMove_ex_mm(	float x_mm_relative, 	float y_mm_relative,
     }
     else
     {
-        SERIAL_DEBUG_STR(" sdfelativ");
+        SERIAL_DEBUG_STR("!!!  jog z by A B C D alone !!!!!!");
 
         if(  abs(ZA_mm_relative) > FLOAT_ZERO_GAP )
         {
@@ -510,7 +511,8 @@ void ClearRod()
 // 5. up the ZB for pressure
 // 6. Scroll back , press the ZB
 // 7. up again , for second pressure.
-void SetNewLayer(	long   		back_Y_mm_relative,
+void SetNewLayer(	
+                    long      back_Y_mm_relative,
                     float       up_ZA_mm_relative,
                     float     down_ZB_mm_relative,
                     float       up_ZB_mm_relative,

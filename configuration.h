@@ -110,8 +110,8 @@
 #define	Y_HOME_RETRACT_MM 	30
 //===============================================================================
 
-#define	X_AXIS_LENGTH_MM	((long)1000)	//mm
-#define	Y_AXIS_LENGTH_MM	((long)1500)	//mm
+#define	X_AXIS_LENGTH_MM	((long)1300)	//mm
+#define	Y_AXIS_LENGTH_MM	((long)1700)	//mm
 
 #define	X_AXIS_LENGTH_STEP			(long)((X_STEP_PER_MM) * (X_AXIS_LENGTH_MM) )	//X-AXIS length 160mm
 #define	Y_AXIS_LENGTH_STEP			(long)((Y_STEP_PER_MM) * (Y_AXIS_LENGTH_MM) )	//y-AXIS length 400mm
