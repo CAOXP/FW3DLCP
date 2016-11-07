@@ -9,7 +9,6 @@
 
 #include "Powder_0.h"
 
-#include "WaitTimeMSec.h"
 
 
 void initialLEDbuzzerPins()
@@ -51,5 +50,10 @@ void ledBuz_in_loop()
 			digitalWrite(LED_IO_2, HIGH);
 			timecnt = 0;
 		}
+	}
+
+	//if(heartbeat.bCheckTimeUp())
+	{
+		//SERIAL_ECHO_STRln("o");
 	}
 }

@@ -17,6 +17,8 @@ extern HardwareSerial Serial;
 #include "configuration.h"
 #include "motor_AccelStepper.h"
 
+#include "WaitTimeMSec.h"
+
 #include "ui_paraKeypad.h"
 #include "ui_ledbuzzer.h"
 #include "ui_temperature.h"

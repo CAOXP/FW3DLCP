@@ -63,5 +63,9 @@ extern AccelStepper stepperZC;
 extern AccelStepper stepperZD;
 extern AccelStepper stepperR;
 
+extern WaitTimeMSec heartbeat;
+
+
+
 
 #endif /* VARIBLES_H_ */

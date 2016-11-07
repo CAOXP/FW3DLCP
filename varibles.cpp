@@ -39,3 +39,6 @@ AccelStepper stepperZD(1, 	MOTOR_IO_ZD_STEP, 	MOTOR_IO_ZD_DIR);
 AccelStepper stepperR (1, 	MOTOR_IO_R_STEP, 	MOTOR_IO_R_DIR);
 
 
+
+WaitTimeMSec heartbeat(HEART_BEAT_INTERVAL_MS);
+
