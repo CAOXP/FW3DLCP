@@ -133,9 +133,9 @@
 #define KEY_IO_SET			41
 #define KEY_IO_STOP		43
 
-#define LED_IO_1	13	//LEDs for instructions
+#define LED_IO_1	11	//LEDs for instructions
 #define LED_IO_2	12
-#define LED_IO_3	11
+#define LED_IO_3	13
 
 
 #endif /* PINS_H_ */

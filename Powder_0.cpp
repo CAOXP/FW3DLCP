@@ -39,10 +39,15 @@ void setup()
     SERIAL_ECHO_STR  (" Compiled: ");SERIAL_ECHO_STRln(__DATE__);
     SERIAL_ECHO_STR  ("           ");SERIAL_ECHO_STRln(__TIME__);
     SERIAL_ECHO_STRln("========================");
+    SERIAL_ECHO_STRln("");
+    SERIAL_ECHO_STR("Initializing system...");
+    digitalWrite(LED_IO_1, LOW);
+    delay(2000);
+    digitalWrite(LED_IO_1, HIGH);
+
+    SERIAL_ECHO_STRln("done");
+    SERIAL_ECHO_STRln("========================");
     SERIAL_ECHO_STRln("start");
-
-
-    delay(1000);
 
     //stepperY.enableOutputs();
     //stepperY.move(-100);
