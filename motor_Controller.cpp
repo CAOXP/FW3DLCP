@@ -633,61 +633,15 @@ void SetNewLayerN(	long   		back_Y_mm_relative,
                  )
 {
 
-    unsigned int i = 0;	//laying time index
 
     //enable ALL motors
     enableAllOutputs();
-
-startlaying:
-
-    //1.scroll back the start of Y axis.
-    stepperR.setCurrentPosition(0);
-    stepperR.moveTo(200000);
-
-    stepperY.setSpeed(STEPER_Y_MAXSPEED * (2 / 4));					//set the Y speed
-    stepperY.move( 0 - Y_AXIS_LENGTH_STEP * Y_STEP_PER_MM);
-
-    while( digitalRead(HOME_IO_Y) && (stepperY.distanceToGo()) )
-    {
-        stepperY.run();
-        stepperR.run();
-    }
-    stepperY.stop();
-    stepperY.setCurrentPosition(0);		//Clear the last steps
-
-#if Y_HOME_RETRACT_MM >0
-    stepperY.move(Y_STEP_PER_MM * Y_HOME_RETRACT_MM);
-    stepperY.runToPosition();
-    stepperY.setCurrentPosition(0);		//Clear the last steps
-#endif
-
-
-
-    //2.ZA up  for a new layer
-    //3.ZB down for a new layer
-#ifdef	PRINT_PREVENT_SWEPT_MM
-
-    if (i == 0)	//the first time laying needs
-    {
-        jogZAmm( PRINT_PREVENT_SWEPT_MM +   up_ZA_mm_relative );
-        jogZBmm( PRINT_PREVENT_SWEPT_MM - down_ZB_mm_relative );
-    }
-    else
-    {
-        jogZAmm(            up_ZA_mm_relative );
-        jogZBmm( 0 -  down_ZB_mm_relative );
-    }
-
-#else
-    jogZAmm(		up_ZA_mm_relative );
-    jogZBmm( 0 -  down_ZB_mm_relative );
-#endif
 
 
     //4.rolling back to set a new layer of powder.
     stepperY.move( back_Y_mm_relative * Y_STEP_PER_MM );
     stepperR.setCurrentPosition(0);
-    stepperR.moveTo(200000);
+    stepperR.moveTo(up_ZA_mm_relative * Y_STEP_PER_MM);
     while(stepperY.distanceToGo())
     {
         stepperR.run();
@@ -695,60 +649,32 @@ startlaying:
     }
 
 
-    //=================================
-    //5.6.  5.7 two times of press
-    if(back_Y2_mm_relative && up_ZB_mm_relative)
-    {
-        //5.ZB up, in order to make PRESSURE.
-        jogZBmm( up_ZB_mm_relative );
-
-        //6.scroll back the Y2 axis.
-        stepperY.move( 0 - back_Y2_mm_relative * Y_STEP_PER_MM);
-        stepperR.setCurrentPosition(0);
-        stepperR.moveTo(100000);
-        while( digitalRead(HOME_IO_Y) && (stepperY.distanceToGo()) )
-        {
-            stepperY.run();
-            stepperR.run();
-        }
-
-        //5.2.ZB up, in order to make PRESSURE.
-        jogZBmm( up_ZB_mm_relative );
-
-        //7.rolling back
-        stepperY.move( back_Y2_mm_relative * Y_STEP_PER_MM );
-        stepperR.setCurrentPosition(0);
-        stepperR.moveTo(-100000);
-        while(stepperY.distanceToGo())
-        {
-            stepperR.run();
-            stepperY.run();
-        }
-
-    }// press movement above
-    //==============================
-
-
-    i++;
-    if(i < n)
-    {
-        goto startlaying;
-    }
-
-    //lower both of the ZA ZB to prevent being swept
-#ifdef	PRINT_PREVENT_SWEPT_MM
-    jogZAmm( 0 - PRINT_PREVENT_SWEPT_MM );
-    jogZBmm( 0 - PRINT_PREVENT_SWEPT_MM );
-#endif
+    stepperR.stop();
 
     //稍微转动，抖灰
     stepperR.setCurrentPosition(0);
-    stepperR.move(-300);
+    stepperR.move(300);
     stepperR.runToPosition();
 
     //disable motors
     disableAllOutputs();
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Line-printing function, with repeated times, fixed running X speed.

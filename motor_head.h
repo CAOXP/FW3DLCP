@@ -65,6 +65,14 @@ extern void SetNewLayerN(	long   		back_Y_mm_relative,
                             unsigned int n						//laying times
                         );
 
+//not used, 20170704
+extern void SetNewLayer0704(   long  back_Y_mm_relative,
+                            float       up_ZA_mm_relative,
+                            float     down_ZB_mm_relative,
+                            float       up_ZB_mm_relative,
+                            long      back_Y2_mm_relative,
+                            unsigned int n                      //laying times
+                        );
 // Line print function with repeated times
 extern void LinePrintRepeat(float ystepmm, float xspeedmm, uint16_t repeat);
 

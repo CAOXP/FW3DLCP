@@ -145,17 +145,11 @@ void commandProcess()
         	utemp=z1temp=z2temp=0.0;
         	btemp=b2temp=0;
 
-            if(cmd_seen('B')) btemp=cmd_value_long();	//		 Back
-            if(cmd_seen('C')) z1temp=cmd_value();		//powder Container
-            if(cmd_seen('P')) z2temp=cmd_value();		//powder Printing
-            if(cmd_seen('U')) utemp=cmd_value();		//		 Up
-            if(cmd_seen('R')) rtemp=cmd_value();		//		 Up
-            if(btemp<1)	btemp	= SET_NEW_LAYER_DEFAULT_BACK;
-
-
-            if(cmd_seen('b'))	{	b2temp = cmd_value_long();           	}
-            else				{	b2temp = SET_NEW_LAYER_DEFAULT_BACK2;	}
-
+          if(cmd_seen('B')) btemp=cmd_value_long();	//		 Back
+          if(cmd_seen('C')) z1temp=cmd_value();		//powder Container
+          if(cmd_seen('P')) z2temp=cmd_value();		//powder Printing
+          if(cmd_seen('U')) utemp=cmd_value();		//		 Up
+          if(cmd_seen('R')) rtemp=cmd_value();		//		 Up
 
         	SERIAL_DEBUG_STR("CMD RCV: SetNewLayer");
         	SERIAL_DEBUG_STR_INT("  bk_mm:", btemp);
@@ -163,24 +157,11 @@ void commandProcess()
         	SERIAL_DEBUG_STR_FLT("  z2_mm:", z2temp,2);
         	SERIAL_DEBUG_STR_FLT("  up_mm:", utemp,2);
         	SERIAL_DEBUG_STR_INT("  b2_mm:", b2temp);
+              
+          SERIAL_DEBUG_STR("  Start a layer.20170704..");
+          SetNewLayerN(btemp, z1temp, z2temp,utemp,b2temp,rtemp);
+          SERIAL_DEBUG_STR("Done!");
 
-        	if( (btemp ==0) || (z1temp==0) || (z2temp==0) )
-        	{
-        		SERIAL_ERROR_STR("ERR: Wrong Data,ZERO");
-        	}
-        	else
-        	{
-                SERIAL_DEBUG_STR("  Start a layer...");
-
-            	SetNewLayerN(btemp, z1temp, z2temp,utemp,b2temp,rtemp);
-
-                //report Y-Motor temperature
-                #ifdef	TEMPERATURE_MONITOR_Y_MOTOR
-                SERIAL_ECHO_STR_FLT("YmtrTmp:", yMotorTempDS.getTemp(), 2);
-                #endif
-
-                SERIAL_DEBUG_STR("Done!");
-        	}
         	break;
 
 #ifdef	CIRCLE_PRINT_FUNCTION
@@ -234,6 +215,11 @@ void commandProcess()
 	SERIAL_DEBUG_STR("Done!");
 
 	break;
+
+
+
+
+
         }
     }
     //System setting
