@@ -246,7 +246,8 @@ void commandProcess()
 		//			M1:		JogMovements, relative value, unit:mm
         //	CMD : M1 X2 Y3 C-5 P8
         case 1:	//all data are  type : float
-            xtemp=ytemp=zAtemp=zBtemp=zCtemp=zDtemp=0.0;
+            xtemp=ytemp=ztemp=0;
+            zAtemp=zBtemp=zCtemp=zDtemp=0.0;
 
             if(cmd_seen('X')) xtemp =cmd_value();		//
             if(cmd_seen('Y')) ytemp =cmd_value();		//

@@ -424,6 +424,7 @@ void jogMove_ex_mm(	float x_mm_relative, 	float y_mm_relative,
     //enable XYZ motors
     enableXYZoutputs();
 
+    //need to be deleted, on 2017June12
     SERIAL_DEBUG_STR_FLT("  ZA_mm_relative:", ZA_mm_relative, 2);
     SERIAL_DEBUG_STR_FLT("  ZB_mm_relative:", ZB_mm_relative, 2);
     SERIAL_DEBUG_STR_FLT("  ZC_mm_relative:", ZC_mm_relative, 2);
@@ -673,7 +674,7 @@ startlaying:
     }
     else
     {
-        jogZAmm(		up_ZA_mm_relative );
+        jogZAmm(            up_ZA_mm_relative );
         jogZBmm( 0 -  down_ZB_mm_relative );
     }
 
@@ -757,9 +758,9 @@ void LinePrintRepeat(float ystepmm, float xspeedmm, uint16_t repeat)
     stepperY.enableOutputs();
     while(repeat--)
     {
-        jogXmmSpeed(130, xspeedmm);
+        jogXmmSpeed(900, xspeedmm);
         jogYmm(ystepmm);
-        jogXmmSpeed(-130, xspeedmm);
+        jogXmmSpeed(-900, xspeedmm);
         jogYmm(ystepmm);
         SERIAL_DEBUG_STR_INT("left:", repeat);
     }
