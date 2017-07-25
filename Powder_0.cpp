@@ -217,8 +217,17 @@ void commandProcess()
 	break;
 
 
+        case 9:
+        //G9 MutliPrinter test 1
+            ytemp =0.0;
+            if(cmd_seen('Y')) ytemp=cmd_value();
 
+            SERIAL_DEBUG_STR("CMD RCV: MultiPrinterTest1");
+            SERIAL_DEBUG_STR_FLT("  y_mm :", ytemp,2);
+            MultiPrinterTest1( ytemp );
+            SERIAL_DEBUG_STR("Done!");
 
+        break;
 
         }
     }

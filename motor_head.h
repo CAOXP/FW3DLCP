@@ -80,6 +80,6 @@ extern void LinePrintRepeat(float ystepmm, float xspeedmm, uint16_t repeat);
 extern void circlePrint(float circle_width_mm_x, float circle_width_mm_y, float nozzle_size_mm);
 
 
-
+extern void MultiPrinterTest1(uint16_t ylength);
 
 #endif
