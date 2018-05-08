@@ -268,6 +268,20 @@ void commandProcess()
 
             break;
 
+        case 10: //SetNewlayer test, move Y and R at the same time
+            ytemp=0;
+            xtemp=0;        
+            if(cmd_seen('Y')) ytemp =cmd_value();    //
+            if(cmd_seen('R')) xtemp =cmd_value();   //            
+            SERIAL_DEBUG_STR("CMD RCV: SetNewLayer test");
+            SERIAL_DEBUG_STR_FLT("  Y_mm :", ytemp,2);
+            SERIAL_DEBUG_STR_FLT("  r_mm :", xtemp,2);
+            SERIAL_DEBUG_STR("  Moving... ");
+            SetNewLayer180508( ytemp, xtemp);
+            SERIAL_DEBUG_STR("Done!");
+        break;       
+
+     
         case 11: //jogXspeed  M11 X2 S23
         	xtemp=stemp=0.0;
             if(cmd_seen('X')) xtemp =cmd_value();		//
@@ -283,6 +297,7 @@ void commandProcess()
 			SERIAL_DEBUG_STR("Done!");
 
             break;
+
 		//========================================================
 		//			M2:		Homing X Y
         case 2:

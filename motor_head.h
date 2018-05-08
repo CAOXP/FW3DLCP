@@ -65,6 +65,8 @@ extern void SetNewLayerN(	long   		back_Y_mm_relative,
                             unsigned int n						//laying times
                         );
 
+extern void SetNewLayer180508(float ytemp, float rtemp);
+
 //not used, 20170704
 extern void SetNewLayer0704(   long  back_Y_mm_relative,
                             float       up_ZA_mm_relative,
