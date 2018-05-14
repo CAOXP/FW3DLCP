@@ -164,58 +164,6 @@ void commandProcess()
 
         	break;
 
-#ifdef	CIRCLE_PRINT_FUNCTION
-        //========================================================
-        //			G1	: Circle printing with water drops
-        //	CMD: G1 X30 Y20 n3:  CirclePrint
-        case 1:
-        	xtemp = ytemp = ntemp=0.0;
-
-            if(cmd_seen('X')) xtemp=cmd_value();
-            if(cmd_seen('Y')) ytemp=cmd_value();
-            if(cmd_seen('n')) ntemp=cmd_value();
-
-        	SERIAL_DEBUG_STR("CMD RCV: Circle Print");
-        	SERIAL_DEBUG_STR_FLT("  x_mm:", xtemp,2);
-        	SERIAL_DEBUG_STR_FLT("  y_mm:", ytemp,2);
-        	SERIAL_DEBUG_STR_FLT("  n_mm:", ntemp,2);
-
-        	if( (xtemp <=0.0) || (ytemp<=0.0) || (ntemp<=0.0) )
-        	{
-        		SERIAL_ERROR_STR("ERR: Wrong Data:ZERO");
-        	}
-        	else
-        	{
-            	SERIAL_DEBUG_STR("  Start printing ... ");
-        		circlePrint(xtemp, ytemp, ntemp);        		
-                SERIAL_DEBUG_STR("Done!");
-        	}
-        	break;
-#endif
-        //========================================================
-        // G7  : Line Printing Test		G7 S60 Y0.2 R2
-        case 7:
-			ytemp = stemp=0.0;rtemp=1;
-
-			if(cmd_seen('Y')) ytemp=cmd_value();
-			if(cmd_seen('S')) stemp=cmd_value();
-			if(cmd_seen('R')) rtemp=cmd_value();
-
-			if(rtemp<0)rtemp=1;
-
-            SERIAL_DEBUG_STR("CMD RCV: LinePrinting");
-			SERIAL_DEBUG_STR_FLT("  y_mm :", ytemp,2);
-			SERIAL_DEBUG_STR_FLT("  s_mms:", stemp,2);
-			SERIAL_DEBUG_STR_INT("  r_   :", rtemp);
-        	SERIAL_DEBUG_STR(" Start printing ...");
-
-        	//call line print
-        	LinePrintRepeat(ytemp,stemp,rtemp);
-
-	SERIAL_DEBUG_STR("Done!");
-
-	break;
-
 
         case 9:
         //G9 MutliPrinter test 1
@@ -281,7 +229,6 @@ void commandProcess()
             SERIAL_DEBUG_STR("Done!");
         break;       
 
-     
         case 11: //jogXspeed  M11 X2 S23
         	xtemp=stemp=0.0;
             if(cmd_seen('X')) xtemp =cmd_value();		//
@@ -339,8 +286,12 @@ void commandProcess()
         	ClearRod();
             SERIAL_DEBUG_STR("Done!");
         	break;
+
+
 //=================================================
-#ifdef	REPETIER_COMPATIBLE
+		//REPETIER_COMPATIBLE below
+//=================================================
+
 		// compatible to Repetier-Host
 		case 115:SERIAL_ECHO_STR("FIRMWARE_NAME:rrp UUID:0000");
 			break;
@@ -355,14 +306,13 @@ void commandProcess()
 			break;
 		}
 	}
+	
 	else if(cmd_seen('T'))
 	{
 		switch( (int)cmd_value() )
 		{
-		case 0:break;
-#endif
-//=================================================
-
+		case 0: break;
+		default :break;
         }
     }
     else

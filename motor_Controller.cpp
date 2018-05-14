@@ -503,7 +503,84 @@ void ClearRod()
     stepperR.disableOutputs();
 }
 
-// Function: set a new layer 						all unit: mm
+
+
+void SetNewLayer180508(float ytemp, float rtemp)
+{
+  
+    //enable ALL motorscl
+    stepperR.enableOutputs();
+    stepperY.enableOutputs();
+
+    stepperY.move( ytemp * Y_STEP_PER_MM );    
+    stepperR.move( 0 - rtemp * 1000);
+    while(stepperY.distanceToGo())
+    {
+        stepperR.run();
+        stepperY.run();
+    }
+    stepperR.stop();
+    
+    stepperR.setCurrentPosition(0);
+    //disable motors
+    stepperR.disableOutputs();
+    stepperY.disableOutputs();
+}
+
+
+
+
+
+
+
+
+
+
+
+void MultiPrinterTest1(uint16_t ylength)
+{
+
+    pinMode(2 , OUTPUT);
+    pinMode(3 , OUTPUT);
+    pinMode(4 , OUTPUT);
+    pinMode(5 , OUTPUT);
+    pinMode(6 , OUTPUT);
+    pinMode(7 , OUTPUT);
+    pinMode(8 , OUTPUT);
+    pinMode(9 , OUTPUT);
+    pinMode(10 , OUTPUT);
+    pinMode(11 , OUTPUT);
+    pinMode(12 , OUTPUT);
+
+
+
+    stepperY.enableOutputs();
+
+
+    //open
+    digitalWrite(2, LOW);    digitalWrite(3, LOW);    digitalWrite(4, LOW);    digitalWrite(5, LOW);    digitalWrite(6, LOW);    digitalWrite(7, LOW);    digitalWrite(8, LOW);    digitalWrite(9, LOW);    digitalWrite(10, LOW);    digitalWrite(11, LOW);    digitalWrite(12, LOW);
+    jogYmm(ylength);
+
+
+    //close
+    digitalWrite(2, HIGH);    digitalWrite(3, HIGH);    digitalWrite(4, HIGH);    digitalWrite(5, HIGH);    digitalWrite(6, HIGH);    digitalWrite(7, HIGH);    digitalWrite(8, HIGH);    digitalWrite(9, HIGH);    digitalWrite(10, HIGH);    digitalWrite(11, HIGH);    digitalWrite(12, HIGH);
+    jogYmm(ylength);
+
+
+    //open
+    digitalWrite(2, LOW);    digitalWrite(3, LOW);    digitalWrite(4, LOW);    digitalWrite(5, LOW);    digitalWrite(6, LOW);    digitalWrite(7, LOW);    digitalWrite(8, LOW);    digitalWrite(9, LOW);    digitalWrite(10, LOW);    digitalWrite(11, LOW);    digitalWrite(12, LOW);
+    jogYmm(ylength);
+    
+    //close
+    digitalWrite(2, HIGH);    digitalWrite(3, HIGH);    digitalWrite(4, HIGH);    digitalWrite(5, HIGH);    digitalWrite(6, HIGH);    digitalWrite(7, HIGH);    digitalWrite(8, HIGH);    digitalWrite(9, HIGH);    digitalWrite(10, HIGH);    digitalWrite(11, HIGH);    digitalWrite(12, HIGH);
+
+
+    stepperY.disableOutputs();
+}
+
+
+
+// Function: set a new layer                        all unit: mm
 //
 // 1. scroll back the Y axis with a relative value,
 // 2. up the ZA by with a relative value,
@@ -512,12 +589,12 @@ void ClearRod()
 // 5. up the ZB for pressure
 // 6. Scroll back , press the ZB
 // 7. up again , for second pressure.
-void SetNewLayer(	
+void SetNewLayer(   
                     long      back_Y_mm_relative,
                     float       up_ZA_mm_relative,
                     float     down_ZB_mm_relative,
                     float       up_ZB_mm_relative,
-                    long   	  back_Y2_mm_relative)
+                    long      back_Y2_mm_relative)
 {
 
     //enable ALL motors
@@ -525,7 +602,7 @@ void SetNewLayer(
 
     //1.scroll back the start of Y axis.
     stepperR.setCurrentPosition(0);
-    stepperY.setSpeed(STEPER_Y_MAXSPEED * (2 / 4));					//set the Y speed
+    stepperY.setSpeed(STEPER_Y_MAXSPEED * (2 / 4));                 //set the Y speed
     stepperY.move( 0 - Y_AXIS_LENGTH_STEP * Y_STEP_PER_MM);
     stepperR.moveTo(200000);
 
@@ -535,21 +612,21 @@ void SetNewLayer(
         stepperR.run();
     }
     stepperY.stop();
-    stepperY.setCurrentPosition(0);		//Clear the last steps
+    stepperY.setCurrentPosition(0);     //Clear the last steps
 
 #if Y_HOME_RETRACT_MM >0
     stepperY.move(Y_STEP_PER_MM * Y_HOME_RETRACT_MM);
     stepperY.runToPosition();
-    stepperY.setCurrentPosition(0);		//Clear the last steps
+    stepperY.setCurrentPosition(0);     //Clear the last steps
 #endif
 
     //2.ZA up  for a new layer
     //3.ZB down for a new layer
-#ifdef	PRINT_PREVENT_SWEPT_MM
+#ifdef  PRINT_PREVENT_SWEPT_MM
     jogZAmm( PRINT_PREVENT_SWEPT_MM +   up_ZA_mm_relative );
     jogZBmm( PRINT_PREVENT_SWEPT_MM - down_ZB_mm_relative );
 #else
-    jogZAmm(		up_ZA_mm_relative );
+    jogZAmm(        up_ZA_mm_relative );
     jogZBmm( 0 -  down_ZB_mm_relative );
 #endif
 
@@ -600,7 +677,7 @@ void SetNewLayer(
 
 
     //lower both of the ZA ZB to prevent being swept
-#ifdef	PRINT_PREVENT_SWEPT_MM
+#ifdef  PRINT_PREVENT_SWEPT_MM
     jogZAmm( 0 - PRINT_PREVENT_SWEPT_MM );
     jogZBmm( 0 - PRINT_PREVENT_SWEPT_MM );
 #endif
@@ -615,7 +692,7 @@ void SetNewLayer(
 
 }
 
-// Function: set a new layer 						all unit: mm
+// Function: set a new layer                        all unit: mm
 //
 // 1. scroll back the Y axis with a relative value,
 // 2. up the ZA by with a relative value,
@@ -624,12 +701,12 @@ void SetNewLayer(
 // 5. up the ZB for pressure
 // 6. Scroll back , press the ZB
 // 7. up again , for second pressure.
-void SetNewLayerN(	long   		back_Y_mm_relative,
+void SetNewLayerN(  long        back_Y_mm_relative,
                     float       up_ZA_mm_relative,
                     float     down_ZB_mm_relative,
                     float       up_ZB_mm_relative,
-                    long   	  back_Y2_mm_relative,
-                    unsigned int n					//laying times
+                    long      back_Y2_mm_relative,
+                    unsigned int n                  //laying times
                  )
 {
 
@@ -660,116 +737,3 @@ void SetNewLayerN(	long   		back_Y_mm_relative,
     disableAllOutputs();
 
 }
-
-void SetNewLayer180508(float ytemp, float rtemp)
-{
-  
-    //enable ALL motorscl
-    stepperR.enableOutputs();
-    stepperY.enableOutputs();
-
-    stepperY.move( ytemp * Y_STEP_PER_MM );    
-    stepperR.move( 0 - rtemp * 1000);
-    while(stepperY.distanceToGo())
-    {
-        stepperR.run();
-        stepperY.run();
-    }
-    stepperR.stop();
-    
-    stepperR.setCurrentPosition(0);
-    //disable motors
-    stepperR.disableOutputs();
-    stepperY.disableOutputs();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Line-printing function, with repeated times, fixed running X speed.
-void LinePrintRepeat(float ystepmm, float xspeedmm, uint16_t repeat)
-{
-    stepperX.enableOutputs();
-    stepperY.enableOutputs();
-    while(repeat--)
-    {
-        jogXmmSpeed(900, xspeedmm);
-        jogYmm(ystepmm);
-        jogXmmSpeed(-900, xspeedmm);
-        jogYmm(ystepmm);
-        SERIAL_DEBUG_STR_INT("left:", repeat);
-    }
-    stepperX.disableOutputs();
-    stepperY.disableOutputs();
-}
-
-
-void MultiPrinterTest1(uint16_t ylength)
-{
-
-    pinMode(2 , OUTPUT);
-    pinMode(3 , OUTPUT);
-    pinMode(4 , OUTPUT);
-    pinMode(5 , OUTPUT);
-    pinMode(6 , OUTPUT);
-    pinMode(7 , OUTPUT);
-    pinMode(8 , OUTPUT);
-    pinMode(9 , OUTPUT);
-    pinMode(10 , OUTPUT);
-    pinMode(11 , OUTPUT);
-    pinMode(12 , OUTPUT);
-
-
-
-    stepperY.enableOutputs();
-
-
-    //open
-    digitalWrite(2, LOW);    digitalWrite(3, LOW);    digitalWrite(4, LOW);    digitalWrite(5, LOW);    digitalWrite(6, LOW);    digitalWrite(7, LOW);    digitalWrite(8, LOW);    digitalWrite(9, LOW);    digitalWrite(10, LOW);    digitalWrite(11, LOW);    digitalWrite(12, LOW);
-    jogYmm(ylength);
-
-
-    //close
-    digitalWrite(2, HIGH);    digitalWrite(3, HIGH);    digitalWrite(4, HIGH);    digitalWrite(5, HIGH);    digitalWrite(6, HIGH);    digitalWrite(7, HIGH);    digitalWrite(8, HIGH);    digitalWrite(9, HIGH);    digitalWrite(10, HIGH);    digitalWrite(11, HIGH);    digitalWrite(12, HIGH);
-    jogYmm(ylength);
-
-
-    //open
-    digitalWrite(2, LOW);    digitalWrite(3, LOW);    digitalWrite(4, LOW);    digitalWrite(5, LOW);    digitalWrite(6, LOW);    digitalWrite(7, LOW);    digitalWrite(8, LOW);    digitalWrite(9, LOW);    digitalWrite(10, LOW);    digitalWrite(11, LOW);    digitalWrite(12, LOW);
-    jogYmm(ylength);
-    
-    //close
-    digitalWrite(2, HIGH);    digitalWrite(3, HIGH);    digitalWrite(4, HIGH);    digitalWrite(5, HIGH);    digitalWrite(6, HIGH);    digitalWrite(7, HIGH);    digitalWrite(8, HIGH);    digitalWrite(9, HIGH);    digitalWrite(10, HIGH);    digitalWrite(11, HIGH);    digitalWrite(12, HIGH);
-
-
-    stepperY.disableOutputs();
-}
-
-//=========================================================================
-#ifdef	CIRCLE_PRINT_FUNCTION
-void runSpeedtoPositionX(long pos_rel)
-{
-}
-void runSpeedtoPositionY(long pos_rel)
-{
-}
-//==========================================================================
-//      画一个螺旋回字形的。由外及内
-//==========================================================================
-
-#define	PRINT_SPEED			   100 	//unit: mm/sec
-
-void circlePrint(float circle_width_mm_x, float circle_width_mm_y, float nozzle_size_mm)
-{
-
-}
-#endif
