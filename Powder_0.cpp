@@ -58,7 +58,6 @@ void setup()
 
 
 
-
 void loop()
 {
         cmd_in_loop();			//receive serial commands.process the serial commands.
@@ -218,9 +217,9 @@ void commandProcess()
 
         case 10: //SetNewlayer test, move Y and R at the same time
             ytemp=0;
-            xtemp=0;        
+            xtemp=0;
             if(cmd_seen('Y')) ytemp =cmd_value();    //
-            if(cmd_seen('R')) xtemp =cmd_value();   //            
+            if(cmd_seen('R')) xtemp =cmd_value();    //            
             SERIAL_DEBUG_STR("CMD RCV: SetNewLayer test");
             SERIAL_DEBUG_STR_FLT("  Y_mm :", ytemp,2);
             SERIAL_DEBUG_STR_FLT("  r_mm :", xtemp,2);

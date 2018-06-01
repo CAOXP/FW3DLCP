@@ -9,12 +9,6 @@
 #include "Powder_0.h"
 
 
-//==================================================================================
-//						Keypad Setting
-//==================================================================================
-#ifdef	KEYPAD_FUNCTION
-paraKeypad keypad(keyPins, KEYNUMBERS, keyCodes);
-#endif
 
 //==================================================================================
 //						Temperature Setting
@@ -38,7 +32,7 @@ AccelStepper stepperZC(1, 	MOTOR_IO_ZC_STEP, 	MOTOR_IO_ZC_DIR);
 AccelStepper stepperZD(1, 	MOTOR_IO_ZD_STEP, 	MOTOR_IO_ZD_DIR);
 AccelStepper stepperR (1, 	MOTOR_IO_R_STEP, 	MOTOR_IO_R_DIR);
 
-
+SoftwareSerial sSComm(SSCOMM_IO_RX, SSCOMM_IO_TX); // RX, TX
 
 WaitTimeMSec heartbeat(HEART_BEAT_INTERVAL_MS);
 

@@ -531,6 +531,33 @@ void SetNewLayer180508(float ytemp, float rtemp)
 
 
 
+void SetNewLayer180601Test(float ytemp, float rtemp)
+{
+  
+    //enable ALL motorscl
+    stepperR.enableOutputs();
+    stepperY.enableOutputs();
+
+    stepperY.move( ytemp * Y_STEP_PER_MM );    
+    stepperR.move( 0 - rtemp * 1000);
+    while(stepperY.distanceToGo())
+    {
+        stepperR.run();
+        stepperY.run();
+        //在某个位置打开喷头
+        if(stepperY.currentPosition()==30*Y_STEP_PER_MM)
+        {
+            SSCOM_JET_CMD("abcd");
+        }
+    }
+    stepperR.stop();
+    
+    stepperR.setCurrentPosition(0);
+    //disable motors
+    stepperR.disableOutputs();
+    stepperY.disableOutputs();
+}
+
 
 
 

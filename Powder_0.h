@@ -16,6 +16,7 @@ extern HardwareSerial Serial;
 #include "pins.h"
 #include "configuration.h"
 #include "motor_AccelStepper.h"
+#include "SoftwareSerial.h"
 
 #include "WaitTimeMSec.h"
 
@@ -27,6 +28,7 @@ extern HardwareSerial Serial;
 
 #include "varibles.h"
 #include "motor_head.h"
+
 
 //end of add your includes here
 #ifdef __cplusplus

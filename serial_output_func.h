@@ -37,3 +37,7 @@
 #define	SERIAL_CMD_ACK(str)						SERIAL_ECHO_STRln(str)
 
 
+
+
+//for Soft Serial communication Definations
+#define SSCOM_JET_CMD(str)                  sSComm.print(str)
