@@ -547,7 +547,7 @@ void SetNewLayer180601Test(float ytemp, float rtemp)
         //在某个位置打开喷头
         if(stepperY.currentPosition()==30*Y_STEP_PER_MM)
         {
-            SSCOM_JET_CMD("abcd");
+            SSCOM_JET_CMD("A");
         }
     }
     stepperR.stop();
