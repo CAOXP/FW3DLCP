@@ -110,4 +110,5 @@ MPCs 的成型机制是煅烧氧化镁与磷酸或磷酸盐之间的**全溶液�
 | `ui_paraSerialCommand.cpp/h` | **指令解析器**：接收上位机发送的变种 G-code 指令并执行动作。 |
 
 ---
-*🔬 致力于通过 3D 打印技术推动新型结构材料 (MPC) 的创新与应用。*
+all codes by caoxp
+MIT license
