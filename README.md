@@ -14,9 +14,9 @@
 
 ---
 
-## 🔬 核心材料科学：磷酸镁基水泥 (MPCs)
+## 🔬 核心材料：磷酸镁基水泥 (MPCs)
 
-本项目采用的核心打印材料为 **磷酸镁基水泥 (Magnesium phosphate-based cements, MPCs)**。
+本材料为 **磷酸材料为 **磷酸镁基水泥 (Magnesium phosphate-based cements, MPCs)**。
 
 ### 1. 反应原理 (Principle Reaction)
 MPCs 的成型机制是煅烧氧化镁与磷酸或磷酸盐之间的**全溶液酸碱反应 (Through solution acid reaction)**。
