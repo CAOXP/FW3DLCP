@@ -110,5 +110,8 @@ MPCs 的成型机制是煅烧氧化镁与磷酸或磷酸盐之间的**全溶液�
 | `ui_paraSerialCommand.cpp/h` | **指令解析器**：接收上位机发送的变种 G-code 指令并执行动作。 |
 
 ---
-all codes by caoxp
-MIT license
+
+## 📄 许可证与作者 (License & Author)
+
+- **作者 (Author)**: [caoxp](https://github.com/CAOXP)
+- **开源协议 (License)**: 本项目所有源代码均基于 [MIT License](https://opensource.org/licenses/MIT) 协议开源。
